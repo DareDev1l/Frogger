@@ -9,9 +9,20 @@ namespace Frogger
     class Frog
     {
         private int x = Console.BufferWidth / 2;
-        private int y = Console.BufferHeight;
+        private int y = Console.BufferHeight - 4;
 
-        Frog Frog
+        private string[] humanFace = 
+                                {
+                                 "_ _",
+                                 "o.o",
+                                 "\\-/"
+                                };
+        public string[] HumanFace
+        {
+            get { return this.humanFace; }
+        }
+
+        public Frog()
         {
             
         }
@@ -30,12 +41,37 @@ namespace Frogger
 
         public void Move()
         {
-
+            while (Console.KeyAvailable)
+            {
+                ConsoleKeyInfo key = Console.ReadKey();
+                if (key.Key == ConsoleKey.UpArrow && this.y > 0)
+                {
+                    this.y -= 3;
+                }
+                else if (key.Key == ConsoleKey.DownArrow && this.y < Console.BufferHeight - 4)
+                {
+                    this.y += 3;
+                }
+                else if (key.Key == ConsoleKey.LeftArrow && this.x > 1)
+                {
+                    this.x -= 3;
+                }
+                else if (key.Key == ConsoleKey.RightArrow && this.x < Console.BufferWidth - 4)
+                {
+                    this.x += 3;
+                }
+            }
         }
 
         public void Draw()
         {
-
+            int yPos = this.y;
+            for (int row = 0; row < humanFace.Length; row++)
+            {
+                Console.SetCursorPosition(this.x, yPos);
+                Console.Write(humanFace[row]);
+                yPos++;
+            }
         }
     }
 }

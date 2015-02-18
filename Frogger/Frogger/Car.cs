@@ -11,7 +11,7 @@ namespace Frogger
         private int x = Console.BufferWidth / 2;
         private int y = Console.BufferHeight;
 
-        Car Car
+        public Car()
         {
 
         }

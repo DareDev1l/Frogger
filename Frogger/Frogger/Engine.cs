@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 
 namespace Frogger
 {
@@ -12,16 +13,20 @@ namespace Frogger
 
         static void Main()
         {
-            Console.WindowWidth = 51;
-            Console.WindowHeight = 99;
-            Console.BufferHeight = Console.WindowHeight;
-            Console.BufferWidth = Console.WindowWidth;
+            Console.WindowWidth = 98;
+            Console.WindowHeight = 49;
+            Console.BufferHeight = 49;
+            Console.BufferWidth = 98;
+
+            Frog newFrog = new Frog();
 
             while (true)
             {
-                
+                Console.Clear();
+                newFrog.Move();
+                newFrog.Draw();
+                Thread.Sleep(80);
             }
-            
         }
     }
 }
