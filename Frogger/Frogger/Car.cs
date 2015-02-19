@@ -92,12 +92,21 @@ namespace Frogger
         }
         public void Draw()
         {
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.SetCursorPosition(this.Coll, this.Row);
             Console.WriteLine(this.carFirstRow.ToString());
             Console.SetCursorPosition(this.Coll, this.Row + 1);
             Console.WriteLine(this.carSecondRow.ToString());
             Console.SetCursorPosition(this.Coll, this.Row + 2);
             Console.WriteLine(this.carThirtRow.ToString());
+        }
+
+        public void CheckCrash(Frog frog)
+        {
+            if (frog.X >= this.Coll-2  &&  frog.X <= this.Coll + 6  &&  frog.Y == this.Row)
+            {
+                Console.WriteLine("Crash");
+            }
         }
     }
 }

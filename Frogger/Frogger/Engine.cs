@@ -11,7 +11,7 @@ namespace Frogger
     class Engine
     {
 
-        static void Main()
+        public static void Main()
         {
             Console.WindowWidth = 98;
             Console.WindowHeight = 49;
@@ -25,6 +25,7 @@ namespace Frogger
                 Console.Clear();
                 newFrog.Move();
                 newCar.Move();
+                newCar.CheckCrash(newFrog);
                 newFrog.Draw();
                 newCar.Draw();
                 Thread.Sleep(100);
