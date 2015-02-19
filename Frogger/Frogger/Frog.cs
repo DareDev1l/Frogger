@@ -10,15 +10,15 @@ namespace Frogger
     {
         private int x = Console.BufferWidth / 2;
         private int y = Console.BufferHeight - 4;
-        private string[] humanFace = 
+        private string[] frogFace = 
                                 {
-                                 " @ @",
+                                 " @ @ ",
                                  "\\(_)/",
-                                 " \\ /"
+                                 " \\ / "
                                 };
-        public string[] HumanFace
+        public string[] FrogFace
         {
-            get { return this.humanFace; }
+            get { return this.frogFace; }
         }
 
         public Frog()
@@ -51,13 +51,13 @@ namespace Frogger
                 {
                     this.y += 3;
                 }
-                else if (key.Key == ConsoleKey.LeftArrow && this.x > 1)
+                else if (key.Key == ConsoleKey.LeftArrow && this.x > 2)
                 {
-                    this.x -= 3;
+                    this.x -= 5;
                 }
-                else if (key.Key == ConsoleKey.RightArrow && this.x < Console.BufferWidth - 4)
+                else if (key.Key == ConsoleKey.RightArrow && this.x < Console.BufferWidth - 8)
                 {
-                    this.x += 3;
+                    this.x += 5;
                 }
             }
         }
@@ -65,11 +65,11 @@ namespace Frogger
         public void Draw()
         {
             int yPos = this.y;
-            for (int row = 0; row < humanFace.Length; row++)
+            for (int row = 0; row < frogFace.Length; row++)
             {
                 Console.SetCursorPosition(this.x, yPos);
                 Console.ForegroundColor = ConsoleColor.Green;
-                Console.Write(humanFace[row]);
+                Console.Write(frogFace[row]);
                 Console.ResetColor();
                 yPos++;
             }

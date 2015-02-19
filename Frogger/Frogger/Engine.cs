@@ -14,14 +14,15 @@ namespace Frogger
 
         public static void Main()
         {
-            Console.WindowWidth = 98;
+            Console.WindowWidth = 100;
             Console.WindowHeight = 49;
             Console.BufferHeight = 49;
-            Console.BufferWidth = 98;
+            Console.BufferWidth = 100;
             int speed = 30;
 
             Frog newFrog = new Frog();
             Car newCar = new Car();
+         
             while (true)
             {
                 Console.Clear();
