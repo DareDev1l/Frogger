@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -8,7 +10,8 @@ namespace Frogger
 {
     class Car
     {
-
+        public static string fullPath = Path.GetFullPath(@"..\..\crash.wav");
+        SoundPlayer crashSound = new SoundPlayer(fullPath);
 
         private int x = Console.BufferWidth / 2;
         private int y = Console.BufferHeight;
@@ -108,6 +111,7 @@ namespace Frogger
         {
             if (frog.X >= this.Coll-4  &&  frog.X <= this.Coll + 6  &&  frog.Y == this.Row)
             {
+                crashSound.Play();
                 frog.X = Console.BufferWidth / 2;
                 frog.Y = Console.BufferHeight - 4;
             }
