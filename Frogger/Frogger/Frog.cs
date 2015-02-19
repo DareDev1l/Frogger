@@ -12,9 +12,9 @@ namespace Frogger
         private int y = Console.BufferHeight - 4;
         private string[] humanFace = 
                                 {
-                                 "_ _",
-                                 "o.o",
-                                 "\\-/"
+                                 " @ @",
+                                 "\\(_)/",
+                                 " \\ /"
                                 };
         public string[] HumanFace
         {

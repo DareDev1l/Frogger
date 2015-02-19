@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
+using System.Windows.Forms;
 
 namespace Frogger
 {
@@ -17,6 +18,7 @@ namespace Frogger
             Console.WindowHeight = 49;
             Console.BufferHeight = 49;
             Console.BufferWidth = 98;
+            int speed = 30;
 
             Frog newFrog = new Frog();
             Car newCar = new Car();
@@ -28,7 +30,7 @@ namespace Frogger
                 newCar.CheckCrash(newFrog);
                 newFrog.Draw();
                 newCar.Draw();
-                Thread.Sleep(100);
+                Thread.Sleep(speed);
             }
             
             
