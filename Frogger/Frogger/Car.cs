@@ -78,7 +78,7 @@ namespace Frogger
         public void Move()
         {
             this.Coll++;
-            if (this.Coll + 7 >= Console.WindowWidth)
+            if (this.Coll + 7 >= Console.BufferWidth+2)
             {
                 this.carFirstRow.Remove(this.carFirstRow.Length - 1, 1);
                 this.carSecondRow.Remove(this.carSecondRow.Length - 1, 1);
