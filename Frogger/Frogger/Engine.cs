@@ -19,14 +19,26 @@ namespace Frogger
             Console.BufferWidth = 98;
 
             Frog newFrog = new Frog();
-
+            Car newCar = new Car();
             while (true)
             {
                 Console.Clear();
                 newFrog.Move();
+                newCar.Move();
                 newFrog.Draw();
-                Thread.Sleep(80);
+                newCar.Draw();
+                Thread.Sleep(100);
             }
+            
+            
+            //while (true)
+            //{
+            //    Console.Clear();
+            //    newFrog.Move();
+            //    newFrog.Draw();
+            //    Thread.Sleep(80);
+            //}
+
         }
     }
 }

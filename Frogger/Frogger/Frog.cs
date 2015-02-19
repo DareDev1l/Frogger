@@ -10,7 +10,6 @@ namespace Frogger
     {
         private int x = Console.BufferWidth / 2;
         private int y = Console.BufferHeight - 4;
-
         private string[] humanFace = 
                                 {
                                  "_ _",
@@ -69,7 +68,9 @@ namespace Frogger
             for (int row = 0; row < humanFace.Length; row++)
             {
                 Console.SetCursorPosition(this.x, yPos);
+                Console.ForegroundColor = ConsoleColor.Green;
                 Console.Write(humanFace[row]);
+                Console.ResetColor();
                 yPos++;
             }
         }
