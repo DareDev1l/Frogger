@@ -48,7 +48,7 @@ namespace Frogger
         public void RenderCar()
         {
             carFirstRow.Append("______");
-            carSecondRow.Append("[][][]-");
+            carSecondRow.Append("[][][]");
             carThirtRow.Append("0---0-");
             //Bus size
             //this.SizeX = 7;
@@ -78,16 +78,11 @@ namespace Frogger
         public void Move()
         {
             this.Coll++;
-            if (this.Coll + 7 == Console.WindowWidth)
+            if (this.Coll + 7 >= Console.WindowWidth)
             {
                 this.carFirstRow.Remove(this.carFirstRow.Length - 1, 1);
                 this.carSecondRow.Remove(this.carSecondRow.Length - 1, 1);
                 this.carThirtRow.Remove(this.carThirtRow.Length - 1, 1);
-            }
-            if (this.carThirtRow.Length == 0)
-            {
-                this.RenderCar();
-                this.Coll = 0;
             }
             if (this.carThirtRow.Length == 0)
             {
