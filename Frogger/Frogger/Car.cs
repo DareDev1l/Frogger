@@ -20,6 +20,8 @@ namespace Frogger
         public StringBuilder carThirtRow;
         private int row;
         private int coll;
+        private int p1;
+        private int p2;
 
         public int Row
         {
@@ -48,14 +50,19 @@ namespace Frogger
             this.carThirtRow = new StringBuilder();
         }
 
+        public Car(int p1, int p2)
+        {
+            // TODO: Complete member initialization
+            this.p1 = p1;
+            this.p2 = p2;
+        }
+
         public void RenderCar()
         {
             carFirstRow.Append("______");
             carSecondRow.Append("[][][]");
             carThirtRow.Append("0---0-");
-            //Bus size
-            //this.SizeX = 7;
-            // this.SizeY = 3;
+            
         }
         //public Car()
         //{
@@ -114,6 +121,7 @@ namespace Frogger
                 crashSound.Play();
                 frog.X = Console.BufferWidth / 2;
                 frog.Y = Console.BufferHeight - 4;
+                frog.Lives--;
             }
         }
     }

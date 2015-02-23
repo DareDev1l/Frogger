@@ -16,15 +16,27 @@ namespace Frogger
                                  "\\(_)/",
                                  " \\ / "
                                 };
+
+        private int lives;
+        private int home;
+        private int points;
         public string[] FrogFace
         {
             get { return this.frogFace; }
         }
 
+        public Frog(int x,int y)
+        {
+            this.x = x;
+            this.y = y;
+        }
+
         public Frog()
         {
-            
+            // TODO: Complete member initialization
         }
+
+      
 
         public int X
         {
@@ -37,7 +49,26 @@ namespace Frogger
             get { return this.y; }
             set { this.y = value; }
         }
+        public int Lives
+        {
+            get { return lives; }
+            set
+            {
+                if(this.lives<0)
+                {
 
+                }
+                else
+                {
+                    this.lives = value;
+                }
+            }
+        }
+        public int Home
+        {
+            get { return points; }
+            set { points = value; }
+        }
         public void Move()
         {
             while (Console.KeyAvailable)
