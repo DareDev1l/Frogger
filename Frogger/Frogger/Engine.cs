@@ -22,16 +22,28 @@ namespace Frogger
             int speed = 30;
             Frog newFrog = new Frog();
             Car newCar = new Car();
+            Car secondNewCar = new Car();
+            Car thirdNewCar = new Car();
+            Car firstLeftCar = new Car();
 
 
             while (true)
             {
                 Console.Clear();
                 newFrog.Move();
-                newCar.Move();
-                newCar.CheckCrash(newFrog);
+                newCar.Move(7);
+                newCar.CheckCrash(newFrog, 42, 6);
                 newFrog.Draw();
-                newCar.Draw();
+                newCar.DrawCar(42);
+                secondNewCar.SecondCarMovement(17);
+                secondNewCar.DrawCar(36);
+                secondNewCar.CheckCrash(newFrog, 36, 16);
+                thirdNewCar.DrawCar(30);
+                thirdNewCar.CheckCrash(newFrog, 30, 10);
+                thirdNewCar.ThirdCarMovement(11);
+                firstLeftCar.DrawLeftCar(27);
+                firstLeftCar.CheckCrash(newFrog, 27, 16);
+                firstLeftCar.FirstLeftCarMovement(17);
                 Thread.Sleep(speed);
             }
 
