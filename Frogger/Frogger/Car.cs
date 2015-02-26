@@ -33,16 +33,9 @@ namespace Frogger
         {
             get { return coll; }
             set
-            {this.coll = value; }
+            { this.coll = value; }
         }
-        //private string[] car = 
-        //                        {
-        //                          "______",
-        //                          "[][][]-",
-        //                          "0---0-"
-        //                        };
-
-
+        
         public Car()
         {
             this.carFirstRow = new StringBuilder();
@@ -51,39 +44,18 @@ namespace Frogger
         }
 
         public Car(int p1, int p2)
-        {
-            // TODO: Complete member initialization
+        {           
             this.p1 = p1;
             this.p2 = p2;
         }
 
-        public void RenderCar()
+        public virtual void RenderCar()
         {
             carFirstRow.Append("______");
             carSecondRow.Append("[][][]");
             carThirtRow.Append("0---0-");
-            
+
         }
-        //public Car()
-        //{
-
-        //}
-        //public string[] carDrow
-        //{
-        //    get { return this.car; }
-        //}
-
-        //public int X
-        //{
-        //    get { return this.x; }
-        //    set { this.x = value; }
-        //}
-
-        //public int Y
-        //{
-        //    get { return this.y; }
-        //    set { this.y = value; }
-        //}
 
         public void Move()
         {
@@ -93,6 +65,7 @@ namespace Frogger
                 this.carFirstRow.Remove(this.carFirstRow.Length - 1, 1);
                 this.carSecondRow.Remove(this.carSecondRow.Length - 1, 1);
                 this.carThirtRow.Remove(this.carThirtRow.Length - 1, 1);
+                //this.carFourthRow.Remove(this.carFourthRow.Length - 1, 1);
             }
             if (this.carThirtRow.Length == 0)
             {
@@ -100,9 +73,9 @@ namespace Frogger
                 this.Coll = 0;
             }
         }
-        public void Draw()
+
+        public virtual void Draw()
         {
-            
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.SetCursorPosition(this.Coll, this.Row);
             Console.WriteLine(this.carFirstRow.ToString());
@@ -111,18 +84,45 @@ namespace Frogger
             Console.SetCursorPosition(this.Coll, this.Row + 2);
             Console.WriteLine(this.carThirtRow.ToString());
             Console.ResetColor();
-           
         }
 
         public void CheckCrash(Frog frog)
         {
-            if (frog.X >= this.Coll-4  &&  frog.X <= this.Coll + 6  &&  frog.Y == this.Row)
+            if (frog.X >= this.Coll - 4 && frog.X <= this.Coll + 6 && (frog.Y == this.Row || frog.Y == this.Row+6))
             {
                 crashSound.Play();
                 frog.X = Console.BufferWidth / 2;
                 frog.Y = Console.BufferHeight - 4;
-                frog.Lives--;
+                frog.LivesLeft--;
             }
+        }
+
+    }
+
+    class Truck : Car
+    {
+        public Truck()
+        {
+            this.carFirstRow = new StringBuilder();
+            this.carSecondRow = new StringBuilder();
+            this.carThirtRow = new StringBuilder();
+        }
+        public override void RenderCar()
+        {
+            carFirstRow.Append("++++++");
+            carSecondRow.Append("[][][]");
+            carThirtRow.Append("0---0-");
+        }
+        public override void Draw()
+        {
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.SetCursorPosition(this.Coll, this.Row + 6);
+            Console.WriteLine(this.carFirstRow.ToString());
+            Console.SetCursorPosition(this.Coll, this.Row + 7);
+            Console.WriteLine(this.carSecondRow.ToString());
+            Console.SetCursorPosition(this.Coll, this.Row + 8);
+            Console.WriteLine(this.carThirtRow.ToString());
+            Console.ResetColor();
         }
     }
 }
