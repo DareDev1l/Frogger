@@ -22,8 +22,11 @@ namespace Frogger
             int speed = 30;
             Frog newFrog = new Frog() { Score = 0, LivesLeft = 3 };
             Car newCar = new Car();
+            Car secondNewCar = new Car();
+            Car thirdNewCar = new Car();
+            Car firstLeftCar = new Car();
 
-           
+
             //Makes an Instance of the HighScore Class
             var scores = new HighScores("1.Peshoo 250").ReadScoresFromFile(file_path);
             scores.ForEach(s => Console.WriteLine(s));
@@ -33,18 +36,26 @@ namespace Frogger
                 StreamWriter sw = new StreamWriter(fs);
                 sw.WriteLine("Chesho 2000");
             }
-            
-          
-                while (true)
-                {
-                    Console.Clear();
-                    newFrog.Move();
-                    newCar.Move();
-                    newCar.CheckCrash(newFrog);
-                    newFrog.Draw();
-                    newCar.Draw();
-                    Thread.Sleep(speed);
-                }
+
+            while (true)
+            {
+                Console.Clear();
+                newFrog.Move();
+                newCar.Move(7);
+                newCar.CheckCrash(newFrog, 42, 6);
+                newFrog.Draw();
+                newCar.DrawCar(42);
+                secondNewCar.SecondCarMovement(17);
+                secondNewCar.DrawCar(36);
+                secondNewCar.CheckCrash(newFrog, 36, 16);
+                thirdNewCar.DrawCar(30);
+                thirdNewCar.CheckCrash(newFrog, 30, 10);
+                thirdNewCar.ThirdCarMovement(11);
+                firstLeftCar.DrawLeftCar(27);
+                firstLeftCar.CheckCrash(newFrog, 27, 16);
+                firstLeftCar.FirstLeftCarMovement(17);
+                Thread.Sleep(speed);
+            }
 
             //List<Car> cars = new List<Car>();
             //Random randomGenerator = new Random();
