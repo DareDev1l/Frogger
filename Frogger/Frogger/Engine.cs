@@ -25,17 +25,19 @@ namespace Frogger
             Car secondNewCar = new Bus();
             Car thirdNewCar = new Truck();
             Car firstLeftCar = new Bus();
+            Car secondLeftCar = new Car();
+            Car thirdLeftCar = new Truck();
 
 
-            //Makes an Instance of the HighScore Class
-            var scores = new HighScores("1.Peshoo 250").ReadScoresFromFile(file_path);
-            scores.ForEach(s => Console.WriteLine(s));
-            //NOT WORKING, MUST BE FIXED -> Adds the new Highscore to the Highscores text file
-            using (FileStream fs = File.Open(file_path, FileMode.Open, FileAccess.Write, FileShare.None))
-            {
-                StreamWriter sw = new StreamWriter(fs);
-                sw.WriteLine("Chesho 2000");
-            }
+            //      //Makes an Instance of the HighScore Class
+            //      var scores = new HighScores("1.Peshoo 250").ReadScoresFromFile(file_path);
+            //      scores.ForEach(s => Console.WriteLine(s));
+            //      //NOT WORKING, MUST BE FIXED -> Adds the new Highscore to the Highscores text file
+            //      using (FileStream fs = File.Open(file_path, FileMode.Open, FileAccess.Write, FileShare.None))
+            //      {
+            //          StreamWriter sw = new StreamWriter(fs);
+            //          sw.WriteLine("Chesho 2000");
+            //      }
 
             while (true)
             {
@@ -54,6 +56,12 @@ namespace Frogger
                 firstLeftCar.DrawCar(27);
                 firstLeftCar.CheckCrash(newFrog, 27, 16);
                 firstLeftCar.FirstLeftCarMovement(17);
+                secondLeftCar.DrawCar(33);
+                secondLeftCar.FirstLeftCarMovement(7);
+                secondLeftCar.CheckCrash(newFrog, 33, 6);
+                thirdLeftCar.DrawCar(39);
+                thirdLeftCar.FirstLeftCarMovement(11);
+                thirdLeftCar.CheckCrash(newFrog, 39, 10);
                 Thread.Sleep(speed);
             }
 

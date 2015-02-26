@@ -53,9 +53,12 @@ namespace Frogger
 
         public virtual void RenderCar()
         {
-            carFirstRow.Append("______");
-            carSecondRow.Append("[][][]");
-            carThirtRow.Append("-0--0-");
+            if (carFirstRow.Length == 0)
+            {
+                carFirstRow.Append("______");
+                carSecondRow.Append("[][][]");
+                carThirtRow.Append("-0--0-");
+            }
         }
 
         public virtual void DrawCar(int n)
@@ -98,10 +101,10 @@ namespace Frogger
             if (this.carThirtRow.Length == 0 || this.Coll == 0)
             {
                 RenderCar();
-                this.Coll = 84;
+                this.Coll = 100 - carFirstRow.Length;
             }
         }
-        
+
         //This method checks whether the frog will crash in a vehicle. It's not optimised but works
         public void CheckCrash(Frog frog, int n, int m)
         {
@@ -128,9 +131,12 @@ namespace Frogger
         //Visual representation of the Object Truck
         public override void RenderCar()
         {
-            carFirstRow.Append("__________");
-            carSecondRow.Append("[][][][][]");
-            carThirtRow.Append("-0------0-");
+            if (carFirstRow.Length == 0)
+            {
+                carFirstRow.Append("__________");
+                carSecondRow.Append("[][][][][]");
+                carThirtRow.Append("-0------0-");
+            }
         }
         //The movement is the same as in the Car
         public override void Move(int n)
@@ -163,9 +169,12 @@ namespace Frogger
         //Visual representation of the Object Bus
         public override void RenderCar()
         {
-            carFirstRow.Append("________________");
-            carSecondRow.Append(" [][][][][][][] ");
-            carThirtRow.Append("-0------------0-");
+            if (carFirstRow.Length == 0)
+            {
+                carFirstRow.Append("________________");
+                carSecondRow.Append(" [][][][][][][] ");
+                carThirtRow.Append("-0------------0-");
+            }
         }
         //The movement is the same as in the Car
         public override void Move(int n)
