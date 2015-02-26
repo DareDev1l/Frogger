@@ -22,9 +22,9 @@ namespace Frogger
             int speed = 30;
             Frog newFrog = new Frog() { Score = 0, LivesLeft = 3 };
             Car newCar = new Car();
-            Car secondNewCar = new Car();
-            Car thirdNewCar = new Car();
-            Car firstLeftCar = new Car();
+            Car secondNewCar = new Bus();
+            Car thirdNewCar = new Truck();
+            Car firstLeftCar = new Bus();
 
 
             //Makes an Instance of the HighScore Class
@@ -45,13 +45,13 @@ namespace Frogger
                 newCar.CheckCrash(newFrog, 42, 6);
                 newFrog.Draw();
                 newCar.DrawCar(42);
-                secondNewCar.SecondCarMovement(17);
+                secondNewCar.Move(17);
                 secondNewCar.DrawCar(36);
                 secondNewCar.CheckCrash(newFrog, 36, 16);
                 thirdNewCar.DrawCar(30);
                 thirdNewCar.CheckCrash(newFrog, 30, 10);
-                thirdNewCar.ThirdCarMovement(11);
-                firstLeftCar.DrawLeftCar(27);
+                thirdNewCar.Move(11);
+                firstLeftCar.DrawCar(27);
                 firstLeftCar.CheckCrash(newFrog, 27, 16);
                 firstLeftCar.FirstLeftCarMovement(17);
                 Thread.Sleep(speed);

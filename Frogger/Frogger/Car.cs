@@ -51,31 +51,26 @@ namespace Frogger
             this.p2 = p2;
         }
 
-        public void RenderCar()
+        public virtual void RenderCar()
         {
             carFirstRow.Append("______");
             carSecondRow.Append("[][][]");
             carThirtRow.Append("-0--0-");
-
         }
 
-        public void SecondRenderCar()
+        public virtual void DrawCar(int n)
         {
-            carFirstRow.Append("________________");
-            carSecondRow.Append(" [][][][][][][] ");
-            carThirtRow.Append("-0------------0-");
-
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.SetCursorPosition(this.Coll, this.Row + (n));
+            Console.WriteLine(this.carFirstRow.ToString());
+            Console.SetCursorPosition(this.Coll, this.Row + (n + 1));
+            Console.WriteLine(this.carSecondRow.ToString());
+            Console.SetCursorPosition(this.Coll, this.Row + (n + 2));
+            Console.WriteLine(this.carThirtRow.ToString());
+            Console.ResetColor();
         }
 
-        public void ThirdRenderCar()
-        {
-            carFirstRow.Append("__________");
-            carSecondRow.Append("[][][][][]");
-            carThirtRow.Append("-0------0-");
-
-        }
-
-        public void Move(int n)
+        public virtual void Move(int n)
         {
             this.Coll++;
             if (this.Coll + n >= Console.BufferWidth + 2)
@@ -90,40 +85,8 @@ namespace Frogger
                 this.Coll = 0;
             }
         }
-
-        public void SecondCarMovement(int n)
-        {
-            this.Coll++;
-            if (this.Coll + n >= Console.BufferWidth + 2)
-            {
-                this.carFirstRow.Remove(this.carFirstRow.Length - 1, 1);
-                this.carSecondRow.Remove(this.carSecondRow.Length - 1, 1);
-                this.carThirtRow.Remove(this.carThirtRow.Length - 1, 1);
-            }
-            if (this.carThirtRow.Length == 0)
-            {
-                this.SecondRenderCar();
-                this.Coll = 0;
-            }
-        }
-
-        public void ThirdCarMovement(int n)
-        {
-            this.Coll++;
-            if (this.Coll + n >= Console.BufferWidth + 2)
-            {
-                this.carFirstRow.Remove(this.carFirstRow.Length - 1, 1);
-                this.carSecondRow.Remove(this.carSecondRow.Length - 1, 1);
-                this.carThirtRow.Remove(this.carThirtRow.Length - 1, 1);
-            }
-            if (this.carThirtRow.Length == 0)
-            {
-                this.ThirdRenderCar();
-                this.Coll = 0;
-            }
-        }
-
-        public void FirstLeftCarMovement(int n)
+        //Movement for the cars coming from right to left
+        public virtual void FirstLeftCarMovement(int n)
         {
             this.Coll--;
             if (this.Coll - n >= Console.BufferWidth + 2)
@@ -134,37 +97,12 @@ namespace Frogger
             }
             if (this.carThirtRow.Length == 0 || this.Coll == 0)
             {
-                this.SecondRenderCar();
+                RenderCar();
                 this.Coll = 84;
             }
         }
-
-        public void DrawCar(int n)
-        {
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.SetCursorPosition(this.Coll, this.Row + (n));
-            Console.WriteLine(this.carFirstRow.ToString());
-            Console.SetCursorPosition(this.Coll, this.Row + (n + 1));
-            Console.WriteLine(this.carSecondRow.ToString());
-            Console.SetCursorPosition(this.Coll, this.Row + (n + 2));
-            Console.WriteLine(this.carThirtRow.ToString());
-            Console.ResetColor();
-
-        }
-
-        public void DrawLeftCar(int n)
-        {
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.SetCursorPosition(this.Coll, this.Row + n);
-            Console.WriteLine(this.carFirstRow.ToString());
-            Console.SetCursorPosition(this.Coll, this.Row + (n + 1));
-            Console.WriteLine(this.carSecondRow.ToString());
-            Console.SetCursorPosition(this.Coll, this.Row + (n + 2));
-            Console.WriteLine(this.carThirtRow.ToString());
-            Console.ResetColor();
-
-        }
-
+        
+        //This method checks whether the frog will crash in a vehicle. It's not optimised but works
         public void CheckCrash(Frog frog, int n, int m)
         {
             if (frog.X >= this.Coll - 4 && frog.X <= this.Coll + m && frog.Y == this.Row + n)
@@ -174,6 +112,88 @@ namespace Frogger
                 frog.Y = Console.BufferHeight - 4;
                 frog.Lives--;
             }
+        }
+    }
+
+    //Class Truck inherits the methods of Car
+    class Truck : Car
+    {
+        //Constructor of Truck is the same as Car
+        public Truck()
+        {
+            this.carFirstRow = new StringBuilder();
+            this.carSecondRow = new StringBuilder();
+            this.carThirtRow = new StringBuilder();
+        }
+        //Visual representation of the Object Truck
+        public override void RenderCar()
+        {
+            carFirstRow.Append("__________");
+            carSecondRow.Append("[][][][][]");
+            carThirtRow.Append("-0------0-");
+        }
+        //The movement is the same as in the Car
+        public override void Move(int n)
+        {
+            this.Coll++;
+            if (this.Coll + n >= Console.BufferWidth + 2)
+            {
+                this.carFirstRow.Remove(this.carFirstRow.Length - 1, 1);
+                this.carSecondRow.Remove(this.carSecondRow.Length - 1, 1);
+                this.carThirtRow.Remove(this.carThirtRow.Length - 1, 1);
+            }
+            if (this.carThirtRow.Length == 0)
+            {
+                RenderCar();
+                this.Coll = 0;
+            }
+        }
+
+    }
+    //Class Bus inherits the methods of Car
+    class Bus : Car
+    {
+        //Constructor of Bus is the same as Car
+        public Bus()
+        {
+            this.carFirstRow = new StringBuilder();
+            this.carSecondRow = new StringBuilder();
+            this.carThirtRow = new StringBuilder();
+        }
+        //Visual representation of the Object Bus
+        public override void RenderCar()
+        {
+            carFirstRow.Append("________________");
+            carSecondRow.Append(" [][][][][][][] ");
+            carThirtRow.Append("-0------------0-");
+        }
+        //The movement is the same as in the Car
+        public override void Move(int n)
+        {
+            this.Coll++;
+            if (this.Coll + n >= Console.BufferWidth + 2)
+            {
+                this.carFirstRow.Remove(this.carFirstRow.Length - 1, 1);
+                this.carSecondRow.Remove(this.carSecondRow.Length - 1, 1);
+                this.carThirtRow.Remove(this.carThirtRow.Length - 1, 1);
+            }
+            if (this.carThirtRow.Length == 0)
+            {
+                RenderCar();
+                this.Coll = 0;
+            }
+        }
+        //Draws the car coming from right to left
+        public override void DrawCar(int n)
+        {
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.SetCursorPosition(this.Coll, this.Row + n);
+            Console.WriteLine(this.carFirstRow.ToString());
+            Console.SetCursorPosition(this.Coll, this.Row + (n + 1));
+            Console.WriteLine(this.carSecondRow.ToString());
+            Console.SetCursorPosition(this.Coll, this.Row + (n + 2));
+            Console.WriteLine(this.carThirtRow.ToString());
+            Console.ResetColor();
         }
     }
 }
