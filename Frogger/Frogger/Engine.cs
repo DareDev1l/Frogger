@@ -5,35 +5,46 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
 using System.Windows.Forms;
+using System.IO;
 
 namespace Frogger
 {
     //here the game starts and ends, here we call all other stuff
     class Engine
     {
-
-
         public static void Main()
         {
             Console.WindowWidth = 100;
             Console.WindowHeight = 49;
             Console.BufferHeight = 49;
             Console.BufferWidth = 100;
+            string file_path = @"D:\Telerik Team Projects\C# 2 Team Project Copy\C-Sharp-2-Group-Project\Frogger\Frogger\HighScore.txt";
             int speed = 30;
-            Frog newFrog = new Frog();
+            Frog newFrog = new Frog() { Score = 0, LivesLeft = 3 };
             Car newCar = new Car();
 
-
-            while (true)
+           
+            //Makes an Instance of the HighScore Class
+            var scores = new HighScores("1.Peshoo 250").ReadScoresFromFile(file_path);
+            scores.ForEach(s => Console.WriteLine(s));
+            //NOT WORKING, MUST BE FIXED -> Adds the new Highscore to the Highscores text file
+            using (FileStream fs = File.Open(file_path, FileMode.Open, FileAccess.Write, FileShare.None))
             {
-                Console.Clear();
-                newFrog.Move();
-                newCar.Move();
-                newCar.CheckCrash(newFrog);
-                newFrog.Draw();
-                newCar.Draw();
-                Thread.Sleep(speed);
+                StreamWriter sw = new StreamWriter(fs);
+                sw.WriteLine("Chesho 2000");
             }
+            
+          
+                while (true)
+                {
+                    Console.Clear();
+                    newFrog.Move();
+                    newCar.Move();
+                    newCar.CheckCrash(newFrog);
+                    newFrog.Draw();
+                    newCar.Draw();
+                    Thread.Sleep(speed);
+                }
 
             //List<Car> cars = new List<Car>();
             //Random randomGenerator = new Random();
@@ -41,13 +52,13 @@ namespace Frogger
             //cars.Add(new Car(60, 40));
             //foreach (var car in cars)
             //{
-            //    car.RenderCar();
+            //   car.RenderCar();
             //}
             //Frog frog = new Frog(Console.WindowHeight - 4, Console.WindowWidth / 2);
             //frog.Draw();
             //frog.Lives = 3;
             //frog.Home = 0;
-            //while (frog.Lives != 0)
+            //while (frog.LivesLeft != 0)
             //{
             //    Console.Clear();
             //    newFrog.Move();
@@ -61,17 +72,17 @@ namespace Frogger
             //        break;
             //    }
             //}
-            //if (frog.Lives == 0)
+            //if (frog.LivesLeft == 0)
             //{
+            //    Console.Clear();
             //    Console.WriteLine("GAME OVER", 48, ConsoleColor.Red);
-
             //}
             //else
             //{
-            //    Console.WriteLine("LEVELE COMPLETE", 48, ConsoleColor.Red);
+            //    Console.Clear();
+            //    Console.WriteLine("LEVEL COMPLETE", 48, ConsoleColor.Red);
             //}
 
         }
-
     }
 }

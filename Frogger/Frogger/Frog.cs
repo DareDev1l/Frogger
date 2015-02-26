@@ -17,9 +17,9 @@ namespace Frogger
                                  " \\ / "
                                 };
 
-        private int lives;
+        private int livesLeft;
         private int home;
-        private int points;
+        private int score;
         public string[] FrogFace
         {
             get { return this.frogFace; }
@@ -33,10 +33,11 @@ namespace Frogger
 
         public Frog()
         {
-            // TODO: Complete member initialization
+           
         }
 
-      
+        public int LivesLeft { get; set; }
+        public int Score { get; set; }
 
         public int X
         {
@@ -51,23 +52,23 @@ namespace Frogger
         }
         public int Lives
         {
-            get { return lives; }
+            get { return livesLeft; }
             set
             {
-                if(this.lives<0)
+                if(this.livesLeft<0)
                 {
 
                 }
                 else
                 {
-                    this.lives = value;
+                    this.livesLeft = value;
                 }
             }
         }
         public int Home
         {
-            get { return points; }
-            set { points = value; }
+            get { return score; }
+            set { score = value; }
         }
         public void Move()
         {
