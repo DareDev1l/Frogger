@@ -8,14 +8,19 @@ namespace Frogger
 {
     class Menu
     {
-        static void DrawMenu()
+        public static void DrawMenu()
         {
             Console.Clear();
-            Console.ForegroundColor = ConsoleColor.Gray;
-            Console.WriteLine("Start Game");
-            Console.SetCursorPosition(20,20);
-            Console.WriteLine("PROJECT BY GROUP SERPENT FLY");
-            Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            PictureGenerator.StartScreen();
+            for (int i = 0; i < 43; i++)
+            {
+                Console.WriteLine();
+            }
+            Console.Write("###########################################");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write("PRESS ENTER");
+            //Console.WriteLine("PROJECT BY GROUP SERPENT FLY");
         }
     }
 }

@@ -38,6 +38,8 @@ namespace Frogger
             //          StreamWriter sw = new StreamWriter(fs);
             //          sw.WriteLine("Chesho 2000");
             //      }
+            Menu.DrawMenu();
+            Console.ReadLine();
 
             while (true)
             {
