@@ -20,7 +20,7 @@ namespace Frogger
             Console.BufferWidth = 100;
             string file_path = @"D:\Telerik Team Projects\C# 2 Team Project Copy\C-Sharp-2-Group-Project\Frogger\Frogger\HighScore.txt";
             int speed = 30;
-            Frog newFrog = new Frog() { Score = 0, LivesLeft = 3 };
+            Frog newFrog = new Frog() { Score = 0, LivesLeft = 3};
             Car newCar = new Car();
             Car secondNewCar = new Bus();
             Car thirdNewCar = new Truck();
@@ -65,42 +65,92 @@ namespace Frogger
                 Thread.Sleep(speed);
             }
 
-            //List<Car> cars = new List<Car>();
-            //Random randomGenerator = new Random();
-            //cars.Add(new Car(30, 20));
-            //cars.Add(new Car(60, 40));
-            //foreach (var car in cars)
-            //{
-            //   car.RenderCar();
-            //}
-            //Frog frog = new Frog(Console.WindowHeight - 4, Console.WindowWidth / 2);
-            //frog.Draw();
-            //frog.Lives = 3;
-            //frog.Home = 0;
-            //while (frog.LivesLeft != 0)
-            //{
-            //    Console.Clear();
-            //    newFrog.Move();
-            //    newCar.Move();
-            //    newCar.CheckCrash(newFrog);
-            //    newFrog.Draw();
-            //    newCar.Draw();
-            //    Thread.Sleep(speed);
-            //    if (frog.Home == 3)
-            //    {
-            //        break;
-            //    }
-            //}
-            //if (frog.LivesLeft == 0)
-            //{
-            //    Console.Clear();
-            //    Console.WriteLine("GAME OVER", 48, ConsoleColor.Red);
-            //}
-            //else
-            //{
-            //    Console.Clear();
-            //    Console.WriteLine("LEVEL COMPLETE", 48, ConsoleColor.Red);
-            //}
+            if (newFrog.LivesLeft == 0)
+            {
+                Console.Clear();
+               Console.ForegroundColor = ConsoleColor.Red;
+                string[,] gameOver = new string[,]
+                {
+                    {"                                                         ","          .-'''-.                                           "},
+                    {"                                                         ","         '   _    \\                                         "},
+                    {"                  __  __   ___        __.....__          ","      /   /` '.   .----.     .----.  __.....__              "},
+                    {"  .--.           |  |/  `.'   `.  .-''         '.        ","     .   |     \\  '\\    \\   /    .-''         '.            "},
+                    {" /.''\\          |   .-.  .-.   '/     .-''\"'-.  `.      ","     |   '      |  ''   '. /'   /     .-''\"'-.  `..-,.--.   "},
+                    {"| |  | |     __  |  |  |  |  |  /     /________\\   \\     ","     \\    \\     / / |    |'    /     /________\\   |  .-. |  "},
+                    {" \\`-' /   .:--.'.|  |  |  |  |  |                  |     ","      `.   ` ..' /  |    ||    |                  | |  | |  "},
+                    {" /(\"'`   / |   \\ |  |  |  |  |  \\    .-------------'     ","         '-...-'`   '.   `'   .\\    .-------------| |  | |  "},
+                    {" \\ '---. `\" __ | |  |  |  |  |  |\\    '-.____...---.     ","                     \\        / \\    '-.____...---| |  '-   "},
+                    {"  /'\"\"'.\\ .'.''| |__|  |__|  |__| `.             .'      ","                      \\      /   `.             .'| |       "},
+                    {" ||     |/ /   | |_                 `''-...... -'        ","                       '----'      `\\''-...... -' | |       "},
+                    {" \\'. __//\\ \\._,\\ '/                                      ","                                                  |_|       "},
+                    {"  `'---'  `--'  `\"                                       ","                                                            "}
+                };
+                for (int row = 0; row < gameOver.GetLength(0); row++)
+                {
+                    for (int col = 0; col < gameOver.GetLength(1); col++)
+                    {
+                        if(col%2==0)
+                            Console.WriteLine(gameOver[row, col].PadLeft(80, ' '));
+                    }
+                    
+                }
+                Console.WriteLine();
+                for (int row = 0; row < gameOver.GetLength(0); row++)
+                {
+                    for (int col = 0; col < gameOver.GetLength(1); col++)
+                    {
+                        if (col % 2 != 0)
+                            Console.WriteLine(gameOver[row, col].PadLeft(80, ' '));
+                    }
+
+                }
+                Console.WriteLine();
+
+            }
+            else
+            {
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.Green;
+                string[] levelComplete = new string[]
+            {
+            @"             .__                         .__                ",
+            @"             |  |    ____ ___  __  ____  |  |               ",
+            @"             |  |  _/ __ \\  \/ /_/ __ \ |  |               ",
+            @"             |  |__\  ___/ \   / \  ___/ |  |__             ",
+            @"             |____/ \___  > \_/   \___  >|____/             ",
+            @"                        \/            \/                    ",
+            @"                                .__            __           ",
+            @"  ____   ____    _____  ______  |  |    ____ _/  |_   ____  ",
+            @"_/ ___\ /  _ \  /     \ \____ \ |  |  _/ __ \\   __\_/ __ \ ",
+            @"\  \___(  <_> )|  Y Y  \|  |_> >|  |__\  ___/ |  |  \  ___/ ",
+            @" \___  >\____/ |__|_|  /|   __/ |____/ \___  >|__|   \___  >",
+            @"     \/              \/ |__|               \/            \/ "
+            };
+                string[] gameName = new string[]
+            {
+                @"  .----------------------------------------------------------------.  ",
+                @" /  .-.    ______ _____   ____   _____  _____ ______ _____     .-.  \ ",
+                @"|  /   \  |  ____|  __ \ / __ \ / ____|/ ____|  ____|  __ \   /   \  |",
+                @"| |\_.  | | |__  | |__) | |  | | |  __| |  __| |__  | |__) | |    /| |",
+                @"|\|  | /| |  __| |  _  /| |  | | | |_ | | |_ |  __| |  _  /  |\  | |/|",
+                @"| `---' | | |    | | \ \| |__| | |__| | |__| | |____| | \ \  | `---' |",
+                @"|       | |_|    |_|  \_\\____/ \_____|\_____|______|_|  \_\ |       |",
+                @"|       |----------------------------------------------------|       |",
+                @"\       |                                                    |       /",
+                @" \     /                                                      \     / ",
+                @"  `---'                                                        `---'  ",  
+            };
+                foreach (var text in levelComplete)
+                {
+                    Console.WriteLine(text.PadLeft(80,' '));
+                }
+                Console.WriteLine();
+                Console.WriteLine();
+                foreach (var text in gameName)
+                {
+                    Console.WriteLine(text.PadLeft(80, ' '));
+                }
+            }
 
         }
     }
