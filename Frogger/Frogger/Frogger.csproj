@@ -46,6 +46,7 @@
     <Compile Include="Car.cs" />
     <Compile Include="Engine.cs" />
     <Compile Include="Frog.cs" />
+    <Compile Include="FrogFinishes.cs" />
     <Compile Include="HighScores.cs" />
     <Compile Include="Menu.cs" />
     <Compile Include="PictureGenerator.cs" />

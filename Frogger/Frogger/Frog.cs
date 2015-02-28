@@ -7,7 +7,7 @@ using System.Media;
 
 namespace Frogger
 {
-    class Frog
+    public class Frog
     {
        
         private int x = Console.BufferWidth / 2;
