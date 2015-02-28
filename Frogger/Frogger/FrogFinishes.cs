@@ -11,7 +11,6 @@ namespace Frogger
     {
         public static void ConsoleFill(StringBuilder frogsAtTheTop1, StringBuilder frogsAtTheTop2, StringBuilder frogsAtTheTop3)
         {
-            Console.Clear();
             Console.SetCursorPosition(0, 0);
             Console.BackgroundColor = ConsoleColor.Blue;
             Console.WriteLine("                                                                                                            ");
@@ -57,7 +56,7 @@ namespace Frogger
                         frogsAtTheTop3.Append("            \\ /   done!");
                         break;
                 }
-
+                newFrog.speed -= 5;
                 startReach++;
             }
         }

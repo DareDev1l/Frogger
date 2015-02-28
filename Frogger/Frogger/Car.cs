@@ -50,8 +50,8 @@ namespace Frogger
             this.carFirstRow = new StringBuilder();
             this.carSecondRow = new StringBuilder();
             this.carThirtRow = new StringBuilder();
-            this.row = row;
-            this.coll = col;
+            this.Row = row;
+            this.Coll = col;
         }
 
         public virtual void RenderCar()
@@ -76,17 +76,6 @@ namespace Frogger
             Console.ResetColor();
         }
 
-        public virtual void DrawCar(int n, int m)
-        {
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.SetCursorPosition(this.Coll + m, this.Row + (n));
-            Console.WriteLine(this.carFirstRow.ToString());
-            Console.SetCursorPosition(this.Coll + m, this.Row + (n + 1));
-            Console.WriteLine(this.carSecondRow.ToString());
-            Console.SetCursorPosition(this.Coll + m, this.Row + (n + 2));
-            Console.WriteLine(this.carThirtRow.ToString());
-            Console.ResetColor();
-        }
 
         // Move for outer cars
         public virtual void Move(int n)
@@ -132,17 +121,6 @@ namespace Frogger
                 frog.X = Console.BufferWidth / 2;
                 frog.Y = Console.BufferHeight - 4;
                 frog.LivesLeft--;
-            }
-        }
-
-        public void CheckCrash(Frog frog, int n, int m, int col)
-        {
-            if (frog.X >= this.Coll - 4 + col && frog.X <= this.Coll + m + col && frog.Y == this.Row + n)
-            {
-                crashSound.Play();
-                frog.X = Console.BufferWidth / 2;
-                frog.Y = Console.BufferHeight - 4;
-                frog.Lives--;
             }
         }
 

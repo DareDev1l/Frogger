@@ -13,7 +13,11 @@ namespace Frogger
     //here the game starts and ends, here we call all other stuff
     public class Engine
     {
-        
+        public static void ShowInfo(StringBuilder infoLives)
+        {
+            Console.SetCursorPosition(0,0);
+            Console.WriteLine(infoLives);
+        }
       
         public static void Main()
         {
@@ -32,7 +36,7 @@ namespace Frogger
             Car firstLeftCar = new Bus();
             Car secondLeftCar = new Car();
             Car thirdLeftCar = new Truck();
-            Car firstInnerCar = new Car(0,55);
+            Car firstInnerCar = new Car(1,1);
 
 
             //      //Makes an Instance of the HighScore Class
@@ -51,8 +55,13 @@ namespace Frogger
             StringBuilder frogsAtTheTop1 = new StringBuilder();
             StringBuilder frogsAtTheTop2 = new StringBuilder();
             StringBuilder frogsAtTheTop3 = new StringBuilder();
+            StringBuilder infoLives = new StringBuilder();
+            infoLives.Append("Lives: ");
+            infoLives.Append(newFrog.LivesLeft);
             while (true)
             {
+                Console.Clear();
+                //ShowInfo(infoLives);
                 FrogFinishes.ConsoleFill(frogsAtTheTop1,frogsAtTheTop2, frogsAtTheTop3);
                 newFrog.Move();
                 newCar.Move(7);
@@ -60,9 +69,9 @@ namespace Frogger
                 newFrog.Draw();
                 newCar.DrawCar(42);
                 // Inner car
-                firstInnerCar.DrawCar(42, 10);
-                firstInnerCar.CheckCrash(newFrog, 42, 6, 10);
-                firstInnerCar.Move(17);
+                //firstInnerCar.DrawCar(42);
+                //firstInnerCar.CheckCrash(newFrog, 42, 6);
+                //firstInnerCar.Move(17);
                 // Inner car end
                 secondNewCar.Move(17);
                 secondNewCar.DrawCar(36);
@@ -79,11 +88,11 @@ namespace Frogger
                 thirdLeftCar.DrawCar(39);
                 thirdLeftCar.FirstLeftCarMovement(11);
                 thirdLeftCar.CheckCrash(newFrog, 39, 10);
-                Thread.Sleep(speed);
                 // Check if the frog reached the top and print a frog at the top 
                 FrogFinishes.FrogAtTop(newFrog, ref startReach, frogSound, frogsAtTheTop1, frogsAtTheTop2, frogsAtTheTop3);
                 // Check if the frog has lost all lifes or won the game
                 FrogFinishes.WinOrLose(newFrog);
+                Thread.Sleep(newFrog.speed);
             }
         }
     }

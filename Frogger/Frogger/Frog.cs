@@ -23,6 +23,7 @@ namespace Frogger
         private int home;
         private int score;
         public int ReachedTop = 0;
+        public int speed = 30;
         public string[] FrogFace
         {
             get { return this.frogFace; }
