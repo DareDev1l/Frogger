@@ -20,7 +20,12 @@ namespace Frogger
             Console.Write("###########################################");
             Console.ForegroundColor = ConsoleColor.White;
             Console.Write("PRESS ENTER");
-            //Console.WriteLine("PROJECT BY GROUP SERPENT FLY");
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.Write("####################################");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write("PROJECT BY GROUP SERPENT FLY");
         }
     }
 }

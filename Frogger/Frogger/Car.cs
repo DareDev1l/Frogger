@@ -18,8 +18,8 @@ namespace Frogger
         public StringBuilder carFirstRow;
         public StringBuilder carSecondRow;
         public StringBuilder carThirtRow;
-        private int row;
-        private int coll;
+        public int row;
+        public int coll;
         private int p1;
         private int p2;
 
@@ -44,11 +44,14 @@ namespace Frogger
             this.carThirtRow = new StringBuilder();
         }
 
-        public Car(int p1, int p2)
+        public Car(int row, int col)
         {
             // TODO: Complete member initialization
-            this.p1 = p1;
-            this.p2 = p2;
+            this.carFirstRow = new StringBuilder();
+            this.carSecondRow = new StringBuilder();
+            this.carThirtRow = new StringBuilder();
+            this.row = row;
+            this.coll = col;
         }
 
         public virtual void RenderCar()
@@ -73,10 +76,23 @@ namespace Frogger
             Console.ResetColor();
         }
 
+        public virtual void DrawCar(int n, int m)
+        {
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.SetCursorPosition(this.Coll + m, this.Row + (n));
+            Console.WriteLine(this.carFirstRow.ToString());
+            Console.SetCursorPosition(this.Coll + m, this.Row + (n + 1));
+            Console.WriteLine(this.carSecondRow.ToString());
+            Console.SetCursorPosition(this.Coll + m, this.Row + (n + 2));
+            Console.WriteLine(this.carThirtRow.ToString());
+            Console.ResetColor();
+        }
+
+        // Move for outer cars
         public virtual void Move(int n)
         {
             this.Coll++;
-            if (this.Coll + n >= Console.BufferWidth + 2)
+            if (this.Coll + n >= Console.BufferWidth)
             {
                 this.carFirstRow.Remove(this.carFirstRow.Length - 1, 1);
                 this.carSecondRow.Remove(this.carSecondRow.Length - 1, 1);
@@ -88,6 +104,8 @@ namespace Frogger
                 this.Coll = 0;
             }
         }
+        
+
         //Movement for the cars coming from right to left
         public virtual void FirstLeftCarMovement(int n)
         {
@@ -116,6 +134,19 @@ namespace Frogger
                 frog.Lives--;
             }
         }
+
+        public void CheckCrash(Frog frog, int n, int m, int col)
+        {
+            if (frog.X >= this.Coll - 4 + col && frog.X <= this.Coll + m + col && frog.Y == this.Row + n)
+            {
+                crashSound.Play();
+                frog.X = Console.BufferWidth / 2;
+                frog.Y = Console.BufferHeight - 4;
+                frog.Lives--;
+            }
+        }
+
+
     }
 
     //Class Truck inherits the methods of Car
@@ -165,6 +196,15 @@ namespace Frogger
             this.carFirstRow = new StringBuilder();
             this.carSecondRow = new StringBuilder();
             this.carThirtRow = new StringBuilder();
+        }
+
+        public Bus(int row, int coll)
+        {
+            this.carFirstRow = new StringBuilder();
+            this.carSecondRow = new StringBuilder();
+            this.carThirtRow = new StringBuilder();
+            this.row = row;
+            this.coll = coll;
         }
         //Visual representation of the Object Bus
         public override void RenderCar()
