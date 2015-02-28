@@ -20,6 +20,7 @@ namespace Frogger
         private int livesLeft;
         private int home;
         private int score;
+        public int ReachedTop = 0;
         public string[] FrogFace
         {
             get { return this.frogFace; }
@@ -50,7 +51,7 @@ namespace Frogger
             get { return this.y; }
             set { this.y = value; }
         }
-        public int Lives
+        public int Lives 
         {
             get { return livesLeft; }
             set
@@ -77,7 +78,14 @@ namespace Frogger
                 ConsoleKeyInfo key = Console.ReadKey();
                 if (key.Key == ConsoleKey.UpArrow && this.y > 0)
                 {
+                   
                     this.y -= 3;
+                    if (this.y == 0)
+                    {
+                        ReachedTop++;
+                        x = Console.BufferWidth / 2;
+                        y = Console.BufferHeight - 4;
+                    }
                 }
                 else if (key.Key == ConsoleKey.DownArrow && this.y < Console.BufferHeight - 4)
                 {

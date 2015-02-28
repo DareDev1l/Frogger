@@ -113,7 +113,7 @@ namespace Frogger
                 crashSound.Play();
                 frog.X = Console.BufferWidth / 2;
                 frog.Y = Console.BufferHeight - 4;
-                frog.Lives--;
+                frog.LivesLeft--;
             }
         }
     }

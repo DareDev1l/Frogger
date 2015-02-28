@@ -20,7 +20,7 @@ namespace Frogger
             Console.BufferWidth = 100;
             string file_path = @"D:\Telerik Team Projects\C# 2 Team Project Copy\C-Sharp-2-Group-Project\Frogger\Frogger\HighScore.txt";
             int speed = 30;
-            Frog newFrog = new Frog() { Score = 0, LivesLeft = 3};
+            Frog newFrog = new Frog() { Score = 0, LivesLeft = 3 };
             Car newCar = new Car();
             Car secondNewCar = new Bus();
             Car thirdNewCar = new Truck();
@@ -40,10 +40,29 @@ namespace Frogger
             //      }
             Menu.DrawMenu();
             Console.ReadLine();
+            int startReach = 0;
 
+            StringBuilder frogsAtTheTop1 = new StringBuilder();
+            StringBuilder frogsAtTheTop2 = new StringBuilder();
+            StringBuilder frogsAtTheTop3 = new StringBuilder();
             while (true)
             {
                 Console.Clear();
+                Console.SetCursorPosition(0, 0);
+                Console.BackgroundColor = ConsoleColor.Blue;
+                Console.WriteLine("                                                                                                            ");
+                Console.SetCursorPosition(0, 1);
+                Console.BackgroundColor = ConsoleColor.Blue;
+                Console.WriteLine("                                                                                                        ");
+                Console.SetCursorPosition(0, 2);
+                Console.BackgroundColor = ConsoleColor.Blue;
+                Console.WriteLine("                                                                                                    ");
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.SetCursorPosition(0, 0);
+                Console.WriteLine(frogsAtTheTop1.ToString());
+                Console.WriteLine(frogsAtTheTop2.ToString());
+                Console.WriteLine(frogsAtTheTop3.ToString());
+                Console.ResetColor();
                 newFrog.Move();
                 newCar.Move(7);
                 newCar.CheckCrash(newFrog, 42, 6);
@@ -65,13 +84,43 @@ namespace Frogger
                 thirdLeftCar.FirstLeftCarMovement(11);
                 thirdLeftCar.CheckCrash(newFrog, 39, 10);
                 Thread.Sleep(speed);
-            }
+                //check if the frog reasched the top and print a frog at the top 
+                
+                if (newFrog.ReachedTop > startReach)
+                {
+                    switch (startReach)
+                    {
+                        case 0:
+                            frogsAtTheTop1.Append("           @ @  - Mmm!");
+                            frogsAtTheTop2.Append("          \\(_)/");
+                            frogsAtTheTop3.Append("           \\ / ");
+                            break;
+                        case 1:
+                            frogsAtTheTop1.Append("       @ @  - O Yeah!");
+                            frogsAtTheTop2.Append("             \\(_)/");
+                            frogsAtTheTop3.Append("              \\ / ");
+                            break;
+                        case 2:
+                             frogsAtTheTop1.Append("    @ @  - Keep");
+                            frogsAtTheTop2.Append("             \\(_)/ going!");
+                            frogsAtTheTop3.Append("              \\ / ");
+                            break;
+                        case 3:
+                             frogsAtTheTop1.Append("     @ @  - One More");
+                            frogsAtTheTop2.Append("    \\(_)/ and you're");
+                            frogsAtTheTop3.Append("            \\ /   done!");
+                            break;
+                    }
 
-            if (newFrog.LivesLeft == 0)
-            {
-                Console.Clear();
-               Console.ForegroundColor = ConsoleColor.Red;
-                string[,] gameOver = new string[,]
+
+                    startReach++;
+                }
+
+                if (newFrog.LivesLeft == 0)
+                {
+                    Console.Clear();
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    string[,] gameOver = new string[,]
                 {
                     {"                                                         ","          .-'''-.                                           "},
                     {"                                                         ","         '   _    \\                                         "},
@@ -87,33 +136,34 @@ namespace Frogger
                     {" \\'. __//\\ \\._,\\ '/                                      ","                                                  |_|       "},
                     {"  `'---'  `--'  `\"                                       ","                                                            "}
                 };
-                for (int row = 0; row < gameOver.GetLength(0); row++)
-                {
-                    for (int col = 0; col < gameOver.GetLength(1); col++)
+                    for (int row = 0; row < gameOver.GetLength(0); row++)
                     {
-                        if(col%2==0)
-                            Console.WriteLine(gameOver[row, col].PadLeft(80, ' '));
+                        for (int col = 0; col < gameOver.GetLength(1); col++)
+                        {
+                            if (col % 2 == 0)
+                                Console.WriteLine(gameOver[row, col].PadLeft(80, ' '));
+                        }
+
                     }
-                    
-                }
-                Console.WriteLine();
-                for (int row = 0; row < gameOver.GetLength(0); row++)
-                {
-                    for (int col = 0; col < gameOver.GetLength(1); col++)
+                    Console.WriteLine();
+                    for (int row = 0; row < gameOver.GetLength(0); row++)
                     {
-                        if (col % 2 != 0)
-                            Console.WriteLine(gameOver[row, col].PadLeft(80, ' '));
+                        for (int col = 0; col < gameOver.GetLength(1); col++)
+                        {
+                            if (col % 2 != 0)
+                                Console.WriteLine(gameOver[row, col].PadLeft(80, ' '));
+                        }
+
                     }
+                    Console.WriteLine();
+                    return;
 
                 }
-                Console.WriteLine();
-
-            }
-            else
-            {
-                Console.Clear();
-                Console.ForegroundColor = ConsoleColor.Green;
-                string[] levelComplete = new string[]
+                else if (newFrog.ReachedTop == 5)
+                {
+                    Console.Clear();
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    string[] levelComplete = new string[]
             {
             @"             .__                         .__                ",
             @"             |  |    ____ ___  __  ____  |  |               ",
@@ -128,7 +178,7 @@ namespace Frogger
             @" \___  >\____/ |__|_|  /|   __/ |____/ \___  >|__|   \___  >",
             @"     \/              \/ |__|               \/            \/ "
             };
-                string[] gameName = new string[]
+                    string[] gameName = new string[]
             {
                 @"  .----------------------------------------------------------------.  ",
                 @" /  .-.    ______ _____   ____   _____  _____ ______ _____     .-.  \ ",
@@ -142,18 +192,20 @@ namespace Frogger
                 @" \     /                                                      \     / ",
                 @"  `---'                                                        `---'  ",  
             };
-                foreach (var text in levelComplete)
-                {
-                    Console.WriteLine(text.PadLeft(80,' '));
+                    foreach (var text in levelComplete)
+                    {
+                        Console.WriteLine(text.PadLeft(80, ' '));
+                    }
+                    Console.WriteLine();
+                    Console.WriteLine();
+                    foreach (var text in gameName)
+                    {
+                        Console.WriteLine(text.PadLeft(80, ' '));
+                    }
+                    return;
                 }
-                Console.WriteLine();
-                Console.WriteLine();
-                foreach (var text in gameName)
-                {
-                    Console.WriteLine(text.PadLeft(80, ' '));
-                }
-            }
 
+            }
         }
     }
 }
