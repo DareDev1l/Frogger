@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Media;
 
 namespace Frogger
 {
     class Frog
     {
+       
         private int x = Console.BufferWidth / 2;
         private int y = Console.BufferHeight - 4;
         private string[] frogFace = 
@@ -78,7 +80,6 @@ namespace Frogger
                 ConsoleKeyInfo key = Console.ReadKey();
                 if (key.Key == ConsoleKey.UpArrow && this.y > 0)
                 {
-                   
                     this.y -= 3;
                     if (this.y == 0)
                     {

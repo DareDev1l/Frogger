@@ -6,14 +6,18 @@ using System.Threading.Tasks;
 using System.Threading;
 using System.Windows.Forms;
 using System.IO;
+using System.Media;
 
 namespace Frogger
 {
     //here the game starts and ends, here we call all other stuff
     class Engine
     {
+      
         public static void Main()
         {
+              string fullPath = Path.GetFullPath(@"..\..\Frog Sound.wav");
+              SoundPlayer frogSound = new SoundPlayer(fullPath);
             Console.WindowWidth = 100;
             Console.WindowHeight = 49;
             Console.BufferHeight = 49;
@@ -94,6 +98,7 @@ namespace Frogger
                 
                 if (newFrog.ReachedTop > startReach)
                 {
+                    frogSound.Play();
                     switch (startReach)
                     {
                         case 0:
