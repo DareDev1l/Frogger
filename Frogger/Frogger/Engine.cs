@@ -27,6 +27,7 @@ namespace Frogger
             Car firstLeftCar = new Bus();
             Car secondLeftCar = new Car();
             Car thirdLeftCar = new Truck();
+            Car firstInnerCar = new Car(0,55);
 
 
             //      //Makes an Instance of the HighScore Class
@@ -68,6 +69,11 @@ namespace Frogger
                 newCar.CheckCrash(newFrog, 42, 6);
                 newFrog.Draw();
                 newCar.DrawCar(42);
+                //
+                firstInnerCar.DrawCar(42, 25);
+                firstInnerCar.CheckCrash(newFrog, 42, 6, 25);
+                firstInnerCar.Move(32);
+                //
                 secondNewCar.Move(17);
                 secondNewCar.DrawCar(36);
                 secondNewCar.CheckCrash(newFrog, 36, 16);
