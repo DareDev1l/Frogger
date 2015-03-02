@@ -7,7 +7,6 @@
     using System.Threading;
     using System.IO;
     using System.Media;
-
     using Frogger.Enemies;
 
     //here the game starts and ends, here we call all other stuff
@@ -80,24 +79,24 @@
                 FrogFinishes.ConsoleFill(frogsAtTheTop1, frogsAtTheTop2, frogsAtTheTop3);
                 newFrog.Move();
                 newFrog.Draw();
-                firstRightCar.Move(17);
+                firstRightCar.MoveRight(17);
                 firstRightCar.CheckCrash(newFrog, 42, 6);
                 firstRightCar.DrawCar(42);
-                secondRightCar.Move(17);
+                secondRightCar.MoveRight(17);
                 secondRightCar.DrawCar(36);
                 secondRightCar.CheckCrash(newFrog, 36, 16);
                 thirdRightCar.DrawCar(30);
                 thirdRightCar.CheckCrash(newFrog, 30, 10);
-                thirdRightCar.Move(30);
+                thirdRightCar.MoveRight(30);
                 fourthRightCar.DrawCar(21);
                 fourthRightCar.CheckCrash(newFrog, 21, 10);
-                fourthRightCar.Move(11);
+                fourthRightCar.MoveRight(11);
                 fifthRightCar.DrawCar(15);
                 fifthRightCar.CheckCrash(newFrog, 15, 16);
-                fifthRightCar.Move(30);
+                fifthRightCar.MoveRight(30);
                 sixthRightCar.DrawCar(9);
                 sixthRightCar.CheckCrash(newFrog, 9, 6);
-                sixthRightCar.Move(6);
+                sixthRightCar.MoveRight(6);
                 //TUNNEL DRAW
                 firstTunnel.FirstCarTunnel();
                 firstTunnel.DrawFirstTunnel(42, 12);
@@ -112,22 +111,22 @@
                 // Inner car end
                 firstLeftCar.DrawCar(27);
                 firstLeftCar.CheckCrash(newFrog, 27, 16);
-                firstLeftCar.FirstLeftCarMovement(17);
+                firstLeftCar.MoveLeft(17);
                 secondLeftCar.DrawCar(33);
-                secondLeftCar.FirstLeftCarMovement(7);
+                secondLeftCar.MoveLeft(7);
                 secondLeftCar.CheckCrash(newFrog, 33, 6);
                 thirdLeftCar.DrawCar(39);
-                thirdLeftCar.FirstLeftCarMovement(11);
+                thirdLeftCar.MoveLeft(11);
                 thirdLeftCar.CheckCrash(newFrog, 39, 10);
                 fourthLeftCar.DrawCar(18);
                 fourthLeftCar.CheckCrash(newFrog, 18, 6);
-                fourthLeftCar.FirstLeftCarMovement(7);
+                fourthLeftCar.MoveLeft(7);
                 fifthLeftCar.DrawCar(12);
                 fifthLeftCar.CheckCrash(newFrog, 12, 10);
-                fifthLeftCar.FirstLeftCarMovement(11);
+                fifthLeftCar.MoveLeft(11);
                 sixthLeftCar.DrawCar(6);
                 sixthLeftCar.CheckCrash(newFrog, 6, 16);
-                sixthLeftCar.FirstLeftCarMovement(17);
+                sixthLeftCar.MoveLeft(17);
 
                 DrawStats(1, newFrog.LivesLeft, 100);
                 // Check if the frog reached the top and print a frog at the top 
