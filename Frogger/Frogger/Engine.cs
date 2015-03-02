@@ -22,9 +22,11 @@
             Console.BufferWidth = 100;
             string file_path = @"D:\Telerik Team Projects\C# 2 Team Project Copy\C-Sharp-2-Group-Project\Frogger\Frogger\HighScore.txt";
             int speed = 30;
+            int startReach = 0;
 
             Frog newFrog = new Frog();
 
+            // Cars coming from right
             Enemy firstRightCar = new Car();
             Enemy secondRightCar = new Bus();
             Enemy thirdRightCar = new Truck();
@@ -32,6 +34,7 @@
             Enemy fifthRightCar = new Bus();
             Enemy sixthRightCar = new Car();
 
+            // Cars coming from left
             Enemy firstLeftCar = new Bus();
             Enemy secondLeftCar = new Car();
             Enemy thirdLeftCar = new Truck();
@@ -39,12 +42,20 @@
             Enemy fifthLeftCar = new Truck();
             Enemy sixthLeftCar = new Bus();
 
-            // Car firstInnerCar = new Car(1,1);
-
-
+            // Tunnels
             Tunnel firstTunnel = new Tunnel();
             Tunnel secondTunnel = new Tunnel();
             Tunnel thirdTunnel = new Tunnel();
+
+            // Frogs that are displayed when frog reaches top
+            StringBuilder frogsAtTheTop1 = new StringBuilder();
+            StringBuilder frogsAtTheTop2 = new StringBuilder();
+            StringBuilder frogsAtTheTop3 = new StringBuilder();
+
+            // Lifes info
+            StringBuilder infoLives = new StringBuilder();
+            infoLives.Append("Lives: ");
+            infoLives.Append(newFrog.LivesLeft);
 
 
             //      //Makes an Instance of the HighScore Class
@@ -56,16 +67,11 @@
             //          StreamWriter sw = new StreamWriter(fs);
             //          sw.WriteLine("Chesho 2000");
             //      }
+
             Menu.DrawMenu();
             Console.ReadLine();
-            int startReach = 0;
+          
 
-            StringBuilder frogsAtTheTop1 = new StringBuilder();
-            StringBuilder frogsAtTheTop2 = new StringBuilder();
-            StringBuilder frogsAtTheTop3 = new StringBuilder();
-            StringBuilder infoLives = new StringBuilder();
-            infoLives.Append("Lives: ");
-            infoLives.Append(newFrog.LivesLeft);
             while (true)
             {
                 Console.Clear();

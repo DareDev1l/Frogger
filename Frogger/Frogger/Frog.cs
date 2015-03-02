@@ -126,7 +126,7 @@ namespace Frogger
             {
                 if (y == 24)
                 {
-                    Console.BackgroundColor = ConsoleColor.Yellow;
+                    Console.BackgroundColor = ConsoleColor.DarkYellow;
                 }
                 Console.SetCursorPosition(this.x, yPos);
                 Console.ForegroundColor = ConsoleColor.Green;
