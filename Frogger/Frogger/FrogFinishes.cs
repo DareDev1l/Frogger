@@ -70,7 +70,7 @@ namespace Frogger
                         frogsAtTheTop3.Append("            \\ /   done!");
                         break;
                 }
-                newFrog.speed -= 5;
+                newFrog.speed -= 3;
                 startReach++;
             }
         }
