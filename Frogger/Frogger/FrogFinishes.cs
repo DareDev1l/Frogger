@@ -47,6 +47,9 @@ namespace Frogger
             if (newFrog.ReachedTop > startReach)
             {
                 frogSound.Play();
+                newFrog.Score += 100;
+                newFrog.WasInSafeZone = false;
+
                 switch (startReach)
                 {
                     case 0:
@@ -72,6 +75,18 @@ namespace Frogger
                 }
                 newFrog.speed -= 3;
                 startReach++;
+            }
+        }
+
+        public static void FrogAtSafeZone(Frog frog)
+        {
+            if (frog.Y == 24)
+            {
+                if (frog.WasInSafeZone == false)
+                {
+                    frog.WasInSafeZone = true;
+                    frog.Score += 50;
+                }
             }
         }
 
