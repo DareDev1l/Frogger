@@ -82,7 +82,7 @@ namespace Frogger
                 if (key.Key == ConsoleKey.UpArrow && this.y > 0)
                 {
                     this.y -= 3;
-                    if (this.y == 0)
+                    if (this.y == 3)
                     {
                         ReachedTop++;
                         x = Console.BufferWidth / 2;
@@ -109,6 +109,10 @@ namespace Frogger
             int yPos = this.y;
             for (int row = 0; row < frogFace.Length; row++)
             {
+                if (y == 24)
+                {
+                    Console.BackgroundColor = ConsoleColor.Yellow;
+                }
                 Console.SetCursorPosition(this.x, yPos);
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.Write(frogFace[row]);

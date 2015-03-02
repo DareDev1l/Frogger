@@ -11,17 +11,31 @@ namespace Frogger
     {
         public static void ConsoleFill(StringBuilder frogsAtTheTop1, StringBuilder frogsAtTheTop2, StringBuilder frogsAtTheTop3)
         {
-            Console.SetCursorPosition(0, 0);
+            // 
+            Console.SetCursorPosition(0, 3);
             Console.BackgroundColor = ConsoleColor.Blue;
-            Console.WriteLine("                                                                                                            ");
-            Console.SetCursorPosition(0, 1);
-            Console.BackgroundColor = ConsoleColor.Blue;
-            Console.WriteLine("                                                                                                        ");
-            Console.SetCursorPosition(0, 2);
+            Console.WriteLine("                                                                                                     ");
+            Console.SetCursorPosition(0, 4);
             Console.BackgroundColor = ConsoleColor.Blue;
             Console.WriteLine("                                                                                                    ");
+            Console.SetCursorPosition(0, 5);
+            Console.BackgroundColor = ConsoleColor.Blue;
+            Console.WriteLine("                                                                                                    ");
+           // The safe zone
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.SetCursorPosition(0, 24);
+            Console.BackgroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("Safe                                                                                            Safe");
+            Console.SetCursorPosition(0, 25);
+            Console.BackgroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("                                                                                                    ");
+            Console.SetCursorPosition(0, 26);
+            Console.BackgroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("Zone!                                                                                          Zone!");
+            //
+            Console.BackgroundColor = ConsoleColor.Blue;
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.SetCursorPosition(0, 0);
+            Console.SetCursorPosition(0, 3);
             Console.WriteLine(frogsAtTheTop1.ToString());
             Console.WriteLine(frogsAtTheTop2.ToString());
             Console.WriteLine(frogsAtTheTop3.ToString());
