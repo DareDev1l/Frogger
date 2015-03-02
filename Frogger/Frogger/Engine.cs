@@ -47,6 +47,10 @@
             Tunnel secondTunnel = new Tunnel();
             Tunnel thirdTunnel = new Tunnel();
 
+            //Bridges
+            Bridge firstBridge = new Bridge();
+            Bridge secondBridge = new Bridge();
+
             // Frogs that are displayed when frog reaches top
             StringBuilder frogsAtTheTop1 = new StringBuilder();
             StringBuilder frogsAtTheTop2 = new StringBuilder();
@@ -105,6 +109,12 @@
                 FrogFinishes.ConsoleFill(frogsAtTheTop1, frogsAtTheTop2, frogsAtTheTop3);
                 newFrog.Move();
                 newFrog.Draw();
+                // Bridges
+                firstBridge.FirstBridge();
+                firstBridge.DrawBridge(12, 58);
+                secondBridge.SecondBridge();
+                secondBridge.DrawBridge(36, 60);
+                // Right cars
                 firstRightCar.MoveRight(17);
                 firstRightCar.CheckCrash(newFrog, 42, 6);
                 firstRightCar.DrawCar(42);
@@ -123,18 +133,14 @@
                 sixthRightCar.DrawCar(9);
                 sixthRightCar.CheckCrash(newFrog, 9, 6);
                 sixthRightCar.MoveRight(6);
-                //TUNNEL DRAW
+                //Tunnels
                 firstTunnel.FirstCarTunnel();
                 firstTunnel.DrawFirstTunnel(42, 12);
                 secondTunnel.SecondCarTunnel();
                 secondTunnel.DrawFirstTunnel(30, 19);
                 thirdTunnel.SecondCarTunnel();
                 thirdTunnel.DrawFirstTunnel(15, 19);
-                // Inner car
-                //firstInnerCar.DrawCar(42);
-                //firstInnerCar.CheckCrash(newFrog, 42, 6);
-                //firstInnerCar.Move(17);
-                // Inner car end
+                // Left cars
                 firstLeftCar.DrawCar(27);
                 firstLeftCar.CheckCrash(newFrog, 27, 16);
                 firstLeftCar.MoveLeft(17);

@@ -24,13 +24,13 @@ namespace Frogger
            // The safe zone
             Console.ForegroundColor = ConsoleColor.Red;
             Console.SetCursorPosition(0, 24);
-            Console.BackgroundColor = ConsoleColor.DarkYellow;
+            Console.BackgroundColor = ConsoleColor.White;
             Console.WriteLine("Safe                                                                                            Safe");
             Console.SetCursorPosition(0, 25);
-            Console.BackgroundColor = ConsoleColor.DarkYellow;
+            Console.BackgroundColor = ConsoleColor.White;
             Console.WriteLine("                                                                                                    ");
             Console.SetCursorPosition(0, 26);
-            Console.BackgroundColor = ConsoleColor.DarkYellow;
+            Console.BackgroundColor = ConsoleColor.White;
             Console.WriteLine("Zone!                                                                                          Zone!");
             //
             Console.BackgroundColor = ConsoleColor.Blue;
@@ -141,12 +141,12 @@ namespace Frogger
                 Console.ForegroundColor = ConsoleColor.Green;
                 string[] levelComplete = new string[]
                     {
-                    @"             .__                         .__                ",
-                    @"             |  |    ____ ___  __  ____  |  |               ",
-                    @"             |  |  _/ __ \\  \/ /_/ __ \ |  |               ",
-                    @"             |  |__\  ___/ \   / \  ___/ |  |__             ",
-                    @"             |____/ \___  > \_/   \___  >|____/             ",
-                    @"                        \/            \/                    ",
+                    @"           _____                                            ",
+                    @"          / ____\    __     _____    ____                   ",
+                    @"         / /  ____  /  \   /     \ _/ __ \                  ",
+                    @"         \ \___/ / /_--_\ |  Y Y  \\  ___/                  ",
+                    @"          \_____/ /_/  \_\|__|_|  / \___  >                 ",
+                    @"                                \/      \/                  ",
                     @"                                .__            __           ",
                     @"  ____   ____    _____  ______  |  |    ____ _/  |_   ____  ",
                     @"_/ ___\ /  _ \  /     \ \____ \ |  |  _/ __ \\   __\_/ __ \ ",

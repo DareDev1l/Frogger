@@ -60,7 +60,7 @@
 
         public void DrawCar(int n)
         {
-            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.ForegroundColor = ConsoleColor.Magenta;
             Console.SetCursorPosition(this.Coll, this.Row + (n));
             Console.WriteLine(this.carFirstRow.ToString());
             Console.SetCursorPosition(this.Coll, this.Row + (n + 1));
