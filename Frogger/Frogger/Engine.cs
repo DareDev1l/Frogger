@@ -75,7 +75,34 @@
             //      }
 
             Menu.DrawMenu();
-            Console.ReadLine();
+            while(true)
+            {
+                ConsoleKeyInfo choice = Console.ReadKey();
+                if (choice.Key == ConsoleKey.D1 || choice.Key == ConsoleKey.Enter)
+                {
+                    break;
+                }
+                else if (choice.Key == ConsoleKey.D2)
+                {
+                    // Show highscore
+                }
+                else if (choice.Key == ConsoleKey.D3)
+                {
+                    // Show credits
+                }
+                else if (choice.Key == ConsoleKey.D4)
+                {
+                    // Show Rules
+                }
+                else if (choice.Key == ConsoleKey.D5 || choice.Key == ConsoleKey.Escape)
+                {
+                    Environment.Exit(1);
+                }
+                else
+                {
+                    Menu.DrawMenu();
+                }
+            }
           
 
             while (true)
