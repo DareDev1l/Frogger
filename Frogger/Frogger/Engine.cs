@@ -14,6 +14,8 @@
     {
         public static void Main()
         {
+            string musicFilePath = Path.GetFullPath(@"..\..\music.wav");
+            SoundPlayer music = new SoundPlayer(musicFilePath);
             string fullPath = Path.GetFullPath(@"..\..\Frog Sound.wav");
             SoundPlayer frogSound = new SoundPlayer(fullPath);
             Console.WindowWidth = 100;
@@ -73,6 +75,7 @@
             //      }
 
             Menu.DrawMenu();
+            music.Play();
             while(true)
             {
                 ConsoleKeyInfo choice = Console.ReadKey();

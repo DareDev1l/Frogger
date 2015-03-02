@@ -109,7 +109,7 @@
         {
             if (frog.X >= this.Coll - 4 && frog.X <= this.Coll + m && frog.Y == this.Row + n)
             {
-                crashSound.Play();
+                //crashSound.Play();
                 frog.X = Console.BufferWidth / 2;
                 frog.Y = Console.BufferHeight - 4;
                 frog.LivesLeft--;
