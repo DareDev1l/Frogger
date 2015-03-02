@@ -75,7 +75,7 @@
             //      }
 
             Menu.DrawMenu();
-            music.Play();
+            music.PlayLooping();
             while(true)
             {
                 ConsoleKeyInfo choice = Console.ReadKey();

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Media;
 using System.Text;
@@ -133,7 +132,7 @@ namespace Frogger
 
                 }
                 Console.WriteLine();
-                //Environment.Exit(0);
+                Environment.Exit(0);
 
             }
             else if (newFrog.ReachedTop == 5)
