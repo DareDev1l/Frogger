@@ -128,12 +128,47 @@
                 sixthLeftCar.DrawCar(6);
                 sixthLeftCar.CheckCrash(newFrog, 6, 16);
                 sixthLeftCar.FirstLeftCarMovement(17);
+
+                DrawStats(1, newFrog.LivesLeft, 100);
                 // Check if the frog reached the top and print a frog at the top 
                 FrogFinishes.FrogAtTop(newFrog, ref startReach, frogSound, frogsAtTheTop1, frogsAtTheTop2, frogsAtTheTop3);
                 // Check if the frog has lost all lifes or won the game
                 FrogFinishes.WinOrLose(newFrog);
                 Thread.Sleep(newFrog.speed);
             }
+        }
+
+        private static void DrawStats(int level, int lives, int score)
+        {
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.SetCursorPosition(10, 0);
+            Console.WriteLine("{0}{3}{1}{3}{1}{3}{2}", '┌', '┬', '┐', new string('─', 25));
+            Console.SetCursorPosition(10, 1);
+            Console.Write("{0}{1}{2}{0}{3}", '|', "LEVEL:".PadLeft(13), level.ToString().PadRight(12), "LIVES:".PadLeft(13));
+            if (lives == 1)
+            {
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+            }
+            else if (lives == 2)
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+            }
+            else if (lives == 3)
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+            }
+
+            Console.SetCursorPosition(51, 1);
+            for (int i = 0; i < lives; i++)
+            {
+                Console.Write("♥" + " ");
+            }
+
+            Console.SetCursorPosition(62, 1);
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("{0}{1}{2}{0}", '|', "SCORE:".PadLeft(13), score.ToString().PadRight(12));
+            Console.SetCursorPosition(10, 2);
+            Console.WriteLine("{0}{3}{1}{3}{1}{3}{2}", '└', '┴', '┘', new string('─', 25));
         }
     }
 }
