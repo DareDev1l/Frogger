@@ -71,7 +71,7 @@
         }
 
 
-        public void Move(int n)
+        public void MoveRight(int n)
         {
             this.Coll++;
             if (this.Coll + n >= Console.BufferWidth)
@@ -88,7 +88,7 @@
         }
 
         //Movement for the cars coming from right to left
-        public void FirstLeftCarMovement(int n)
+        public void MoveLeft(int n)
         {
             this.Coll--;
             if (this.Coll - n >= Console.BufferWidth + 2)
