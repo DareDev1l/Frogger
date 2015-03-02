@@ -43,7 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Car.cs" />
+    <Compile Include="Enemies\Bus.cs" />
+    <Compile Include="Enemies\Car.cs" />
+    <Compile Include="Enemies\Enemy.cs" />
+    <Compile Include="Enemies\Truck.cs" />
     <Compile Include="Engine.cs" />
     <Compile Include="Frog.cs" />
     <Compile Include="FrogFinishes.cs" />

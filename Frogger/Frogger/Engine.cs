@@ -1,48 +1,50 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Threading;
-using System.Windows.Forms;
-using System.IO;
-using System.Media;
-
-namespace Frogger
+﻿namespace Frogger
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Text;
+    using System.Threading.Tasks;
+    using System.Threading;
+    using System.IO;
+    using System.Media;
+
+    using Frogger.Enemies;
+
     //here the game starts and ends, here we call all other stuff
     public class Engine
     {
         public static void ShowInfo(StringBuilder infoLives)
         {
-            Console.SetCursorPosition(0,0);
+            Console.SetCursorPosition(0, 0);
             Console.WriteLine(infoLives);
         }
-      
+
         public static void Main()
         {
-              string fullPath = Path.GetFullPath(@"..\..\Frog Sound.wav");
-              SoundPlayer frogSound = new SoundPlayer(fullPath);
+            string fullPath = Path.GetFullPath(@"..\..\Frog Sound.wav");
+            SoundPlayer frogSound = new SoundPlayer(fullPath);
             Console.WindowWidth = 100;
             Console.WindowHeight = 49;
             Console.BufferHeight = 49;
             Console.BufferWidth = 100;
             string file_path = @"D:\Telerik Team Projects\C# 2 Team Project Copy\C-Sharp-2-Group-Project\Frogger\Frogger\HighScore.txt";
             int speed = 30;
-            Frog newFrog = new Frog() { Score = 0, LivesLeft = 3 };
-            Car firstRightCar = new Car();
-            Car secondRightCar = new Bus();
-            Car thirdRightCar = new Truck();
-            Car fourthRightCar = new Truck();
-            Car fifthRightCar = new Bus();
-            Car sixthRightCar = new Car();
 
-            Car firstLeftCar = new Bus();
-            Car secondLeftCar = new Car();
-            Car thirdLeftCar = new Truck();
-            Car fourthLeftCar = new Car();
-            Car fifthLeftCar = new Truck();
-            Car sixthLeftCar = new Bus();
+            Frog newFrog = new Frog() { Score = 0, LivesLeft = 3 };
+
+            Enemy firstRightCar = new Car();
+            Enemy secondRightCar = new Bus();
+            Enemy thirdRightCar = new Truck();
+            Enemy fourthRightCar = new Truck();
+            Enemy fifthRightCar = new Bus();
+            Enemy sixthRightCar = new Car();
+
+            Enemy firstLeftCar = new Bus();
+            Enemy secondLeftCar = new Car();
+            Enemy thirdLeftCar = new Truck();
+            Enemy fourthLeftCar = new Car();
+            Enemy fifthLeftCar = new Truck();
+            Enemy sixthLeftCar = new Bus();
 
             // Car firstInnerCar = new Car(1,1);
 
@@ -75,7 +77,7 @@ namespace Frogger
             {
                 Console.Clear();
                 //ShowInfo(infoLives);
-                FrogFinishes.ConsoleFill(frogsAtTheTop1,frogsAtTheTop2, frogsAtTheTop3);
+                FrogFinishes.ConsoleFill(frogsAtTheTop1, frogsAtTheTop2, frogsAtTheTop3);
                 newFrog.Move();
                 newFrog.Draw();
                 firstRightCar.Move(17);
