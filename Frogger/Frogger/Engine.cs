@@ -180,7 +180,7 @@
             {
                 Console.ForegroundColor = ConsoleColor.Yellow;
             }
-            else if (lives == 3)
+            else if (lives >= 3)
             {
                 Console.ForegroundColor = ConsoleColor.Green;
             }
