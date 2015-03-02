@@ -12,7 +12,8 @@ namespace Frogger
     {
         public static void StartScreen()
         {
-
+            Console.Title = "FROGGER by Serpent Fly\u2122";
+            Console.CursorVisible = false;
             Image Picture = Image.FromFile(@"..\..\startscreen.png");
             //Console.SetWindowSize(140, 49);
             //Console.SetBufferSize((Picture.Width * 0x2), (Picture.Height * 0x2));
