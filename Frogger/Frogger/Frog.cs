@@ -83,36 +83,57 @@ namespace Frogger
                 // If upper arrow is pressed
                 if (key.Key == ConsoleKey.UpArrow && this.y > 0)
                 {
+                    // Check for tunnels
                     if (!(this.y == 45 && this.x > 84) && !(this.y == 33 && this.x > 76) && !(this.y == 18 && this.x > 76))
                     {
-                        this.y -= 3;
-                        if (this.y == 3)
+                        // Check for bridges
+                        if (!(this.y == 39 && this.x > 35 && this.x < 62) && !(this.y == 15 && this.x > 35 && this.x < 56))
                         {
-                            ReachedTop++;
-                            x = Console.BufferWidth / 2;
-                            y = Console.BufferHeight - 4;
+                            this.y -= 3;
+                            if (this.y == 3)
+                            {
+                                ReachedTop++;
+                                x = Console.BufferWidth / 2;
+                                y = Console.BufferHeight - 4;
+                            }
+                            
                         }
+                        
                     }
                 }
                 // If down arrow is pressed
                 else if (key.Key == ConsoleKey.DownArrow && this.y < Console.BufferHeight - 4)
                 {
+                    // Check for tunnels
                     if (!(this.y == 39 && this.x > 84) && !(this.y == 27 && this.x > 76) && !(this.y == 12 && this.x > 76))
                     {
-                        this.y += 3;
+                        // Check for bridges
+                        if (!(this.y == 33 && this.x > 35 && this.x < 62) && !(this.y == 9 && this.x > 35 && this.x < 56))
+                        {
+                            this.y += 3;
+                        }
                     }
                 }
                 // If left arrow is pressed
                 else if (key.Key == ConsoleKey.LeftArrow && this.x > 2)
                 {
-                    this.x -= 5;
+                    // Check for bridges
+                    if (!(this.y == 36 && this.x == 62) && !(this.y == 12 && this.x == 56))
+                    {
+                        this.x -= 3;
+                    }
                 }
                 // If right arrow is pressed
                 else if (key.Key == ConsoleKey.RightArrow && this.x < Console.BufferWidth - 8)
                 {
-                    if (!(this.y == 42 && this.x > 79) && !(this.y == 30 && this.x > 73) && !(this.y == 15 && this.x > 73))
+                    // Check for tunnels
+                    if (!(this.y == 36 && this.x == 35) && !(this.y == 12 && this.x == 35))
                     {
-                        this.x += 5;
+                        if (true)
+                        {
+                            this.x += 3;  
+                        }
+                        
                     }
                 }
             }

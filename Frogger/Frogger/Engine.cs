@@ -111,7 +111,7 @@
                 newFrog.Draw();
                 // Bridges
                 firstBridge.FirstBridge();
-                firstBridge.DrawBridge(12, 58);
+                firstBridge.DrawBridge(12, 59);
                 secondBridge.SecondBridge();
                 secondBridge.DrawBridge(36, 60);
                 // Right cars
