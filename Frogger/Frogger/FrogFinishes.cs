@@ -24,13 +24,13 @@ namespace Frogger
            // The safe zone
             Console.ForegroundColor = ConsoleColor.Red;
             Console.SetCursorPosition(0, 24);
-            Console.BackgroundColor = ConsoleColor.Yellow;
+            Console.BackgroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine("Safe                                                                                            Safe");
             Console.SetCursorPosition(0, 25);
-            Console.BackgroundColor = ConsoleColor.Yellow;
+            Console.BackgroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine("                                                                                                    ");
             Console.SetCursorPosition(0, 26);
-            Console.BackgroundColor = ConsoleColor.Yellow;
+            Console.BackgroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine("Zone!                                                                                          Zone!");
             //
             Console.BackgroundColor = ConsoleColor.Blue;
