@@ -14,8 +14,8 @@
     {
         public static void Main()
         {
-            string musicFilePath = Path.GetFullPath(@"..\..\music.wav");
-            SoundPlayer music = new SoundPlayer(musicFilePath);
+            
+            
             string fullPath = Path.GetFullPath(@"..\..\Frog Sound.wav");
             SoundPlayer frogSound = new SoundPlayer(fullPath);
             Console.WindowWidth = 100;
@@ -63,6 +63,19 @@
             infoLives.Append("Lives: ");
             infoLives.Append(newFrog.LivesLeft);
 
+            // Read music file
+            try
+            {
+                string musicFilePath = Path.GetFullPath(@"..\..\music.wav");
+                var music = new SoundPlayer(musicFilePath);
+                music.PlayLooping();
+
+            }
+            catch (FileNotFoundException)
+            {
+                Console.WriteLine("Music file not available");
+            }
+
 
             //      //Makes an Instance of the HighScore Class
             //      var scores = new HighScores("1.Peshoo 250").ReadScoresFromFile(file_path);
@@ -75,7 +88,6 @@
             //      }
 
             Menu.DrawMenu();
-            music.PlayLooping();
             while(true)
             {
                 ConsoleKeyInfo choice = Console.ReadKey();
