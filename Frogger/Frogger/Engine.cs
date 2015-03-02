@@ -12,12 +12,6 @@
     //here the game starts and ends, here we call all other stuff
     public class Engine
     {
-        public static void ShowInfo(StringBuilder infoLives)
-        {
-            Console.SetCursorPosition(0, 0);
-            Console.WriteLine(infoLives);
-        }
-
         public static void Main()
         {
             string fullPath = Path.GetFullPath(@"..\..\Frog Sound.wav");
@@ -29,7 +23,7 @@
             string file_path = @"D:\Telerik Team Projects\C# 2 Team Project Copy\C-Sharp-2-Group-Project\Frogger\Frogger\HighScore.txt";
             int speed = 30;
 
-            Frog newFrog = new Frog() { Score = 0, LivesLeft = 3 };
+            Frog newFrog = new Frog();
 
             Enemy firstRightCar = new Car();
             Enemy secondRightCar = new Bus();
@@ -75,7 +69,6 @@
             while (true)
             {
                 Console.Clear();
-                //ShowInfo(infoLives);
                 FrogFinishes.ConsoleFill(frogsAtTheTop1, frogsAtTheTop2, frogsAtTheTop3);
                 newFrog.Move();
                 newFrog.Draw();
@@ -128,7 +121,9 @@
                 sixthLeftCar.CheckCrash(newFrog, 6, 16);
                 sixthLeftCar.MoveLeft(17);
 
-                DrawStats(1, newFrog.LivesLeft, 100);
+                DrawStats(1, newFrog.LivesLeft, newFrog.Score);
+
+                FrogFinishes.FrogAtSafeZone(newFrog);
                 // Check if the frog reached the top and print a frog at the top 
                 FrogFinishes.FrogAtTop(newFrog, ref startReach, frogSound, frogsAtTheTop1, frogsAtTheTop2, frogsAtTheTop3);
                 // Check if the frog has lost all lifes or won the game

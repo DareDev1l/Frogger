@@ -113,6 +113,7 @@
                 frog.X = Console.BufferWidth / 2;
                 frog.Y = Console.BufferHeight - 4;
                 frog.LivesLeft--;
+                frog.WasInSafeZone = false;
             }
         }
     }

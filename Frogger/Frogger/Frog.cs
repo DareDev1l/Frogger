@@ -9,7 +9,6 @@ namespace Frogger
 {
     public class Frog
     {
-       
         private int x = Console.BufferWidth / 2;
         private int y = Console.BufferHeight - 4;
         // Model of the frog
@@ -25,20 +24,18 @@ namespace Frogger
         private int score;
         public int ReachedTop = 0;
         public int speed = 30;
-        public string[] FrogFace
-        {
-            get { return this.frogFace; }
-        }
-
-        public Frog(int x,int y)
-        {
-            this.x = x;
-            this.y = y;
-        }
 
         public Frog()
         {
-           
+            this.Score = 0;
+            this.LivesLeft = 3;
+            this.WasInSafeZone = false;
+        }
+       
+        
+        public string[] FrogFace
+        {
+            get { return this.frogFace; }
         }
 
         public int LivesLeft { get; set; }
@@ -70,6 +67,8 @@ namespace Frogger
                 }
             }
         }
+
+        public bool WasInSafeZone { get; set; }
         public int Home
         {
             get { return score; }
