@@ -98,10 +98,10 @@ namespace Frogger
             if (newFrog.LivesLeft == 0 && newFrog.Score != 0)
             {
                 List<Frog> frogs = new List<Frog>();
-                frogs.Add(new Frog("Nakov", 5000));
-                frogs.Add(new Frog("Pesho", 450));
-                frogs.Add(new Frog("Keranov", 250));
-                frogs.Add(new Frog("Pak e Pesho", 200));
+                frogs.Add(new Frog("Alexander", 500));
+                frogs.Add(new Frog("Ivan", 450));
+                frogs.Add(new Frog("Pesho", 250));
+                frogs.Add(new Frog("Gosho", 200));
                 frogs.Add(new Frog(newFrog.Name, newFrog.Score));
                 List<Frog> SortedList = frogs.OrderByDescending(o => o.Score).ToList();
 
