@@ -8,26 +8,25 @@
     using System.IO;
     using System.Media;
     using Frogger.Enemies;
+    using System.Runtime.Serialization.Formatters.Binary;
+
 
     //here the game starts and ends, here we call all other stuff
     public class Engine
     {
         public static void Main()
         {
-            
-            
+
             string fullPath = Path.GetFullPath(@"..\..\Frog Sound.wav");
             SoundPlayer frogSound = new SoundPlayer(fullPath);
             Console.WindowWidth = 100;
             Console.WindowHeight = 49;
             Console.BufferHeight = 49;
             Console.BufferWidth = 100;
-            string file_path = @"D:\Telerik Team Projects\C# 2 Team Project Copy\C-Sharp-2-Group-Project\Frogger\Frogger\HighScore.txt";
             int speed = 30;
             int startReach = 0;
 
-            Frog newFrog = new Frog();
-
+            Frog newFrog = new Frog(Environment.MachineName, 0);
             // Cars coming from right
             Enemy firstRightCar = new Car();
             Enemy secondRightCar = new Bus();
@@ -75,33 +74,57 @@
             {
                 Console.WriteLine("Music file not available");
             }
-
-
-            //      //Makes an Instance of the HighScore Class
-            //      var scores = new HighScores("1.Peshoo 250").ReadScoresFromFile(file_path);
-            //      scores.ForEach(s => Console.WriteLine(s));
-            //      //NOT WORKING, MUST BE FIXED -> Adds the new Highscore to the Highscores text file
-            //      using (FileStream fs = File.Open(file_path, FileMode.Open, FileAccess.Write, FileShare.None))
-            //      {
-            //          StreamWriter sw = new StreamWriter(fs);
-            //          sw.WriteLine("Chesho 2000");
-            //      }
-
+ 
             Menu.DrawMenu();
-            while(true)
+            while (true)
             {
                 ConsoleKeyInfo choice = Console.ReadKey();
                 if (choice.Key == ConsoleKey.D1 || choice.Key == ConsoleKey.Enter)
-                {
+                {                   
                     break;
                 }
                 else if (choice.Key == ConsoleKey.D2)
                 {
                     // Show highscore
+                    Console.Clear();
+                    try
+                    {
+                        using (Stream stream = File.Open("data.txt", FileMode.Open))
+                        {
+                            BinaryFormatter bin = new BinaryFormatter();
+                            var frogs2 = (List<Frog>) bin.Deserialize(stream);
+                            int a = 0;
+                            int cursorline = 2;
+                            Console.SetCursorPosition(45, 0);
+                            Console.WriteLine("HIGHSCORES");
+                            foreach (Frog frog in frogs2)
+                            {
+                                a++;
+                                Console.ForegroundColor = ConsoleColor.Green;
+                                Console.SetCursorPosition(40, cursorline);
+                                cursorline += 2;
+                                Console.WriteLine("{0}.{1} has {2} points",a ,frog.Name, frog.Score);
+                            }                            
+                        }
+                    }
+                    catch (IOException)
+                    {
+                    }
                 }
                 else if (choice.Key == ConsoleKey.D3)
                 {
                     // Show credits
+                    Console.Clear();
+                    Console.WriteLine("Project made for TELERIK Academy by: Team SERPENT FLY");
+                    Console.WriteLine("The contributors of this project are: ");
+                    Console.WriteLine();
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("Radostin Angelov, Teodor Hanev, Nikolai Mishev,");
+                    Console.WriteLine("Liubomir Svilenov, Ivan Vasilev, Krasimir Stoyanov,");
+                    Console.WriteLine("Konstantin Malinov, Dobromira Boytcheva and Silvia Ivanova");
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine();
+                    Console.WriteLine("Thank you for playing and have a nice day!");
                 }
                 else if (choice.Key == ConsoleKey.D4)
                 {
@@ -116,7 +139,7 @@
                     Menu.DrawMenu();
                 }
             }
-          
+
 
             while (true)
             {

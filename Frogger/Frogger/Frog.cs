@@ -4,10 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Media;
+using System.Runtime.Serialization;
 
 namespace Frogger
 {
-    public class Frog
+    [Serializable()]
+    public class Frog : ISerializable
     {
         private int x = Console.BufferWidth / 2;
         private int y = Console.BufferHeight - 4;
@@ -25,14 +27,21 @@ namespace Frogger
         public int ReachedTop = 0;
         public int speed = 30;
 
-        public Frog()
+        public Frog(string n, int s)
         {
-            this.Score = 0;
-            this.LivesLeft = 3;
-            this.WasInSafeZone = false;
+            Name = n;
+            Score = s;
+            LivesLeft = 3;
+            WasInSafeZone = false;
         }
-       
-        
+
+        public Frog(SerializationInfo info, StreamingContext context)
+        {
+            Score = (int) info.GetValue("Score", typeof(int));
+            Name = (String)info.GetValue("Name", typeof(string));
+        }
+
+
         public string[] FrogFace
         {
             get { return this.frogFace; }
@@ -40,6 +49,7 @@ namespace Frogger
 
         public int LivesLeft { get; set; }
         public int Score { get; set; }
+        public string Name { get; set; }
 
         public int X
         {
@@ -52,12 +62,12 @@ namespace Frogger
             get { return this.y; }
             set { this.y = value; }
         }
-        public int Lives 
+        public int Lives
         {
             get { return livesLeft; }
             set
             {
-                if(this.livesLeft<0)
+                if (this.livesLeft < 0)
                 {
 
                 }
@@ -79,7 +89,7 @@ namespace Frogger
             while (Console.KeyAvailable)
             {
                 ConsoleKeyInfo key = Console.ReadKey();
-                
+
                 // If upper arrow is pressed
                 if (key.Key == ConsoleKey.UpArrow && this.y > 0)
                 {
@@ -96,9 +106,9 @@ namespace Frogger
                                 x = Console.BufferWidth / 2;
                                 y = Console.BufferHeight - 4;
                             }
-                            
+
                         }
-                        
+
                     }
                 }
                 // If down arrow is pressed
@@ -131,9 +141,9 @@ namespace Frogger
                     {
                         if (true)
                         {
-                            this.x += 3;  
+                            this.x += 3;
                         }
-                        
+
                     }
                 }
             }
@@ -157,5 +167,11 @@ namespace Frogger
             }
         }
 
+
+        public void GetObjectData(SerializationInfo info, StreamingContext context)
+        {
+            info.AddValue("Score", Score);
+            info.AddValue("Name", Name);
+        }
     }
 }

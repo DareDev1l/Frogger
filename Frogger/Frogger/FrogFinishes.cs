@@ -4,6 +4,8 @@ using System.Linq;
 using System.Media;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace Frogger
 {
@@ -21,7 +23,7 @@ namespace Frogger
             Console.SetCursorPosition(0, 5);
             Console.BackgroundColor = ConsoleColor.Blue;
             Console.WriteLine("                                                                                                    ");
-           // The safe zone
+            // The safe zone
             Console.ForegroundColor = ConsoleColor.Red;
             Console.SetCursorPosition(0, 24);
             Console.BackgroundColor = ConsoleColor.White;
@@ -92,6 +94,28 @@ namespace Frogger
 
         public static void WinOrLose(Frog newFrog)
         {
+            if (newFrog.LivesLeft == 0 && newFrog.Score != 0)
+            {
+                List<Frog> frogs = new List<Frog>();
+                frogs.Add(new Frog("Nakov", 5000));
+                frogs.Add(new Frog("Pesho", 450));
+                frogs.Add(new Frog("Keranov", 250));
+                frogs.Add(new Frog("Pak e Pesho", 200));
+                frogs.Add(new Frog(newFrog.Name, newFrog.Score));
+                List<Frog> SortedList = frogs.OrderByDescending(o => o.Score).ToList();
+
+                try
+                {
+                    using (Stream stream = File.Open("data.txt", FileMode.Create))
+                    {
+                        BinaryFormatter bin = new BinaryFormatter();
+                        bin.Serialize(stream, SortedList);
+                    }
+                }
+                catch (IOException)
+                {
+                }
+            }
             if (newFrog.LivesLeft == 0)
             {
                 Console.Clear();
