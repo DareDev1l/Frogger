@@ -109,6 +109,11 @@
                     }
                     catch (IOException)
                     {
+                        Console.WriteLine("Error: File not found");
+                    }
+                    catch
+                    {
+                        Console.WriteLine("Highscore cannot be visualized");
                     }
                 }
                 else if (choice.Key == ConsoleKey.D3)
@@ -232,14 +237,14 @@
                 Thread.Sleep(newFrog.speed);
             }
         }
-
+        public static int speed = 1;
         private static void DrawStats(int level, int lives, int score)
         {
             Console.ForegroundColor = ConsoleColor.White;
             Console.SetCursorPosition(10, 0);
             Console.WriteLine("{0}{3}{1}{3}{1}{3}{2}", '┌', '┬', '┐', new string('─', 25));
             Console.SetCursorPosition(10, 1);
-            Console.Write("{0}{1}{2}{0}{3}", '|', "SPEED:".PadLeft(13), level.ToString().PadRight(12), "LIVES:".PadLeft(13));
+            Console.Write("{0}{1}{2}{0}{3}", '|', "SPEED:".PadLeft(13), speed.ToString().PadRight(12), "LIVES:".PadLeft(13));
             if (lives == 1)
             {
                 Console.ForegroundColor = ConsoleColor.DarkRed;

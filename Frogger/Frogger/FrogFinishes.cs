@@ -77,6 +77,7 @@ namespace Frogger
                 }
                 newFrog.speed -= 3;
                 startReach++;
+                Engine.speed++;
             }
         }
 
