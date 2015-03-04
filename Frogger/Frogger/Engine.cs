@@ -129,6 +129,30 @@
                 else if (choice.Key == ConsoleKey.D4)
                 {
                     // Show Rules
+                    Console.Clear();
+                    Console.Write(new string(' ', 46));
+                    Console.WriteLine("Rules:");
+                    Console.WriteLine();
+                    Console.WriteLine();
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("Help the froggie cross the busy road and navigate it to a calmer " +
+                                      "and safer place – the wonderful \nhome swamp, at the top of the " +
+                                      "screen! \nYou guide the frog using the following navigation keys: \"↑\"" +
+                                      " for up, \"↓\" - down, \"←\" - left, and \n\"→\" - right, and each "+
+                                      "pressing of the respective key of direction causes the frog to hop " +
+                                      "once in \nthat direction. \n\nThe game starts at the bottom of the " +
+                                      "screen. In general the screen is divided in two: the lower and the " +
+                                      "upper halves of it represent a heavy traffic road with various motor" +
+                                      " vehicles: cars, trucks, \nbuses, which move at different speeds. " +
+                                      "There are also tunnels and bridges, on which the frog can't \njump " +
+                                      "and must go around them. So your job is not an easy task! The froggie" +
+                                      " should pass through that traffic chaos in attempt to reach the upper" +
+                                      " part of the screen. In the middle of the play area is a \"Safe Zone\"" +
+                                      " – a place where the little frog can have some rest before continuing " +
+                                      "its dangerous \njourney. The frog has only three lives! If it gets hit" +
+                                      " by a vehicle, the frog remains with one life less. And when the " +
+                                      "froggie is run over by a vehicle three times – the game is over." +
+                                      "\n\nEnjoy the game!");
                 }
                 else if (choice.Key == ConsoleKey.D5 || choice.Key == ConsoleKey.Escape)
                 {
@@ -161,7 +185,7 @@
                 secondRightCar.CheckCrash(newFrog, 36, 16);
                 thirdRightCar.DrawCar(30);
                 thirdRightCar.CheckCrash(newFrog, 30, 10);
-                thirdRightCar.MoveRight(30);
+                thirdRightCar.MoveRight(28);
                 fourthRightCar.DrawCar(21);
                 fourthRightCar.CheckCrash(newFrog, 21, 10);
                 fourthRightCar.MoveRight(11);
@@ -215,7 +239,7 @@
             Console.SetCursorPosition(10, 0);
             Console.WriteLine("{0}{3}{1}{3}{1}{3}{2}", '┌', '┬', '┐', new string('─', 25));
             Console.SetCursorPosition(10, 1);
-            Console.Write("{0}{1}{2}{0}{3}", '|', "LEVEL:".PadLeft(13), level.ToString().PadRight(12), "LIVES:".PadLeft(13));
+            Console.Write("{0}{1}{2}{0}{3}", '|', "SPEED:".PadLeft(13), level.ToString().PadRight(12), "LIVES:".PadLeft(13));
             if (lives == 1)
             {
                 Console.ForegroundColor = ConsoleColor.DarkRed;
